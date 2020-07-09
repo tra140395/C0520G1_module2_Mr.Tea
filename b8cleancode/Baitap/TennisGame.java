@@ -4,7 +4,7 @@ public class TennisGame {
     static String score = "";
     static int tempScore = 0;
 
-    public static String getScore(String player1Name, String player2Name, int player1_score, int player2_score) {
+    public static String getScore(int player1_score, int player2_score) {
 
         if (player1_score == player2_score)
 
