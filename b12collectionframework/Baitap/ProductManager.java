@@ -11,7 +11,7 @@ public class ProductManager {
 
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
-        while (choice !=-1) {
+        while (choice != -1) {
             System.out.println("Quản lý sản phẩm:");
             System.out.println("1.Thêm sản phẩm");
             System.out.println("2.Sửa thông tin sản phẩm");
@@ -68,14 +68,14 @@ public class ProductManager {
                     System.out.println("Nhập tên mặt hàng bạn muốn tìm kiếm: ");
                     scanner.nextLine();
                     String findName = scanner.nextLine();
-//                    if(myArrayList.contains(findName)){
-//                        System.out.println("Mặt hàng bạn muốn tìm có trong danh sách tại vị trí thứ "+(myArrayList.indexOf(findName)+1));
-//                    }else
-//                        System.out.println("Mặt hàng không có trong danh sách!");
                     for (Product temp : myArrayList) {
-                        if (findName.equals(temp.getName())) {
+//                        if (findName.equals(temp.getName())) {
+//                            System.out.println("Mặt hàng có trong danh sách tại vị trí thứ " + (myArrayList.indexOf(temp) + 1));
+//                            System.out.println(myArrayList);
+//                        }
+                        if (temp.getName().toLowerCase().contains(findName.toLowerCase())) {
                             System.out.println("Mặt hàng có trong danh sách tại vị trí thứ " + (myArrayList.indexOf(temp) + 1));
-                            System.out.println(myArrayList);
+                            break;
                         }
                     }
                     break;
