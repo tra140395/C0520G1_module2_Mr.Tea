@@ -13,7 +13,7 @@ public class ReadListCountry {
             String[] arrTemp;
             while ((line = bufferedReader.readLine()) != null){
                 arrTemp = line.split(",");
-                System.out.println(Arrays.toString(arrTemp));
+                System.out.println(arrTemp[arrTemp.length-1]);
             }
             bufferedReader.close();
         } catch (FileNotFoundException e) {

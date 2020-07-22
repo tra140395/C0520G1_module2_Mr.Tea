@@ -8,7 +8,7 @@ public class CopySourceFileToTargetFile {
         try {
             File file = new File(SourcePath);
             File file1 = new File(TargetPath);
-            if(!file.exists()||!file1.exists()){
+            if(!file.exists()){
                 throw new FileNotFoundException();
             }
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
@@ -21,7 +21,7 @@ public class CopySourceFileToTargetFile {
             bufferedWriter1.close();
             bufferedReader.close();
         }catch (Exception e){
-            System.out.println("File khong ton tai!!");
+            System.out.println("File Source khong ton tai!!");
         }
     }
 
