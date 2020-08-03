@@ -1,5 +1,6 @@
 package Controllers;
 
+import Commons.ShowFile;
 import Models.House;
 import Models.Villa;
 
@@ -93,6 +94,7 @@ public class MainControllers {
     }
 
     public void showServices(){
+        ShowFile showFile = new ShowFile();
         System.out.println("1. Show all Villa");
         System.out.println("2. Show all House");
         System.out.println("3. Show all Room");
@@ -109,17 +111,17 @@ public class MainControllers {
             switch (choice){
                 case 1: {
                         File file = new File("src/Data/Villa.csv");
-                        show(file);
+                        showFile.show(file);
                         break;
                 }
                 case 2: {
                         File file = new File("src/Data/House.csv");
-                        show(file);
+                        showFile.show(file);
                         break;
                 }
                 case 3: {
                         File file  = new File("src/Data/Room.csv");
-                        show(file);
+                        showFile.show(file);
                         break;
                 }
                 case 4: {
@@ -141,24 +143,6 @@ public class MainControllers {
             }
         }
 
-    }
-
-    public String show(File file){
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line = "";
-            String[] arrTemp;
-            while ((line = bufferedReader.readLine()) != null) {
-                arrTemp = line.split(",");
-               System.out.println(Arrays.toString(arrTemp));
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "Done";
     }
 
     public static void main(String[] args) {

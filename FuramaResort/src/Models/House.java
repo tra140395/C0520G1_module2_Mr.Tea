@@ -106,9 +106,9 @@ public class House extends Services{
         FileWriter fis = null;
         BufferedWriter fos = null;
         try{
-            fis = new FileWriter("src/Data/House.csv",true);
+            fis = new FileWriter(FILE_HOUSE_PATH,true);
             fos = new BufferedWriter(fis);
-            for (House house : houseList) {
+            for (House house : houseWriteList) {
                 fos.append(house.getId());
                 fos.append(",");
                 fos.append(house.getServiceName());

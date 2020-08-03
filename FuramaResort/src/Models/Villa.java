@@ -120,9 +120,9 @@ public class Villa extends Services {
       FileWriter fis = null;
       BufferedWriter fos = null;
       try{
-          fis = new FileWriter("src/Data/Villa.csv",true);
+          fis = new FileWriter(FILE_VILLA_PATH,true);
           fos = new BufferedWriter(fis);
-          for (Villa villa : villaList) {
+          for (Villa villa : villaWriteList) {
               fos.append(villa.getId());
               fos.append(",");
               fos.append(villa.getServiceName());
