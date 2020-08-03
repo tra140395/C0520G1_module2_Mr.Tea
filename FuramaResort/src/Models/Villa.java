@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Commons.RegexService;
+import commons.RegexService;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

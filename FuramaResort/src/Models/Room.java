@@ -1,6 +1,6 @@
-package Models;
+package models;
 
-import Commons.RegexService;
+import commons.RegexService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,12 +1,12 @@
-package Controllers;
+package controllers;
 
-import Commons.ShowFile;
-import Models.House;
-import Models.Room;
-import Models.Villa;
+import commons.ShowFile;
+import models.Customer;
+import models.House;
+import models.Room;
+import models.Villa;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainControllers {
@@ -15,7 +15,8 @@ public class MainControllers {
     public MainControllers() {
     }
 
-    public void displayMainMenu() {
+    public void displayMainMenu() throws IOException {
+        ShowFile showFile = new ShowFile();
         System.out.println("1. Add New Services");
         System.out.println("2. Show Services");
         System.out.println("3. Add New Customer");
@@ -37,10 +38,14 @@ public class MainControllers {
                     break;
                 }
                 case 3: {
-
+                    Customer.addNewCustomer();
+                    Customer.writeCustomer();
+                    break;
                 }
                 case 4: {
-
+                  File file = new File("src/data/Customer.csv");
+                  showFile.show(file);
+                  break;
                 }
                 case 5: {
 
@@ -56,7 +61,7 @@ public class MainControllers {
 
     }
 
-    public void addNewServices() {
+    public void addNewServices() throws IOException {
         System.out.println("1. Add New Villa");
         System.out.println("2. Add New House");
         System.out.println("3. Add New Room");
@@ -96,7 +101,7 @@ public class MainControllers {
 
     }
 
-    public void showServices(){
+    public void showServices() throws IOException {
         ShowFile showFile = new ShowFile();
         System.out.println("1. Show all Villa");
         System.out.println("2. Show all House");
@@ -148,7 +153,7 @@ public class MainControllers {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         MainControllers mainControllers = new MainControllers();
         mainControllers.displayMainMenu();
     }
