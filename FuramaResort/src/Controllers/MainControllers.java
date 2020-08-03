@@ -2,6 +2,7 @@ package Controllers;
 
 import Commons.ShowFile;
 import Models.House;
+import Models.Room;
 import Models.Villa;
 
 import java.io.*;
@@ -79,7 +80,9 @@ public class MainControllers {
                     break;
                 }
                 case 3:{
-
+                    Room room = new Room();
+                    room.addNewRoom();
+                    break;
                 }
                 case 4:{
                  displayMainMenu();

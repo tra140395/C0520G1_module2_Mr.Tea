@@ -1,5 +1,7 @@
 package Models;
 
+import Commons.RegexService;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -90,15 +92,15 @@ public class Villa extends Services {
         int maximumNumberOfPeople, numberOfFloors;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Id: ");
-        id = scanner.nextLine();
-        System.out.print("Enter Services name's :");
-        serviceName = scanner.nextLine();
+        id = RegexService.RegexInputIdOfVilla();
+        System.out.print("Enter Services's name :");
+        serviceName = RegexService.RegexInputNameService();
         System.out.print("Enter Area:");
-        areaUsed = Double.parseDouble(scanner.nextLine());
+        areaUsed = RegexService.RegexInputArea();
         System.out.print("Enter rental Costs:");
-        rentalCosts = Double.parseDouble(scanner.nextLine());
+        rentalCosts = RegexService.RegexInputCosts();
         System.out.print("Enter the maximum number of people:");
-        maximumNumberOfPeople = Integer.parseInt(scanner.nextLine());
+        maximumNumberOfPeople = RegexService.RegexNumberOfPeople();
         System.out.print("Enter rental type:");
         typeOfRent = scanner.nextLine();
         System.out.print("Enter room standard:");
@@ -108,7 +110,7 @@ public class Villa extends Services {
         System.out.print("Enter pool area:");
         poolArea = Double.parseDouble(scanner.nextLine());
         System.out.print("Enter number of floor:");
-        numberOfFloors = Integer.parseInt(scanner.nextLine());
+        numberOfFloors = RegexService.RegexNumberOfFloor();
     Villa villa = new Villa(id, serviceName, areaUsed, rentalCosts, maximumNumberOfPeople, typeOfRent,
             standardRoom, descriptionOfOtherAmenities, poolArea, numberOfFloors);
     villaList.add(villa);

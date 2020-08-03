@@ -1,5 +1,7 @@
 package Models;
 
+import Commons.RegexService;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -42,20 +44,19 @@ public class Room extends Services {
         int maxPeople;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Id: ");
-        id = scanner.nextLine();
-        System.out.print("Enter Services name's :");
-        serviceName = scanner.nextLine();
+        id = RegexService.RegexInputIdOfRoom();
+        System.out.print("Enter Services's name :");
+        serviceName = RegexService.RegexInputNameService();
         System.out.print("Enter Area:");
-        areaUsed = Double.parseDouble(scanner.nextLine());
+        areaUsed = RegexService.RegexInputArea();
         System.out.print("Enter rental Costs:");
         rentalCosts = Double.parseDouble(scanner.nextLine());
         System.out.print("Enter the maximum number of people:");
-        maxPeople = Integer.parseInt(scanner.nextLine());
+        maxPeople = RegexService.RegexNumberOfPeople();
         System.out.print("Enter rental type:");
         typeOfRent = scanner.nextLine();
-        System.out.print("Enter room standard:");
         System.out.println("Enter the Name of service:");
-        String name = scanner.nextLine();
+        String name = RegexService.RegexInputServicesIncluded();
         System.out.println("Enter the Name of service:");
         int unit = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter the Name of service:");

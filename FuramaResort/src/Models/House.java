@@ -1,5 +1,7 @@
 package Models;
 
+import Commons.RegexService;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -78,15 +80,15 @@ public class House extends Services{
         int maxPeople, numberFloors;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Id: ");
-        id = scanner.nextLine();
-        System.out.print("Enter Services name's :");
-        serviceName = scanner.nextLine();
+        id = RegexService.RegexInputIdOfHouse();
+        System.out.print("Enter Services's name :");
+        serviceName = RegexService.RegexInputNameService();
         System.out.print("Enter Area:");
-        areaUsed = Double.parseDouble(scanner.nextLine());
+        areaUsed = RegexService.RegexInputArea();
         System.out.print("Enter rental Costs:");
-        rentalCosts = Double.parseDouble(scanner.nextLine());
+        rentalCosts = RegexService.RegexInputCosts();
         System.out.print("Enter the maximum number of people:");
-        maxPeople = Integer.parseInt(scanner.nextLine());
+        maxPeople = RegexService.RegexNumberOfPeople();
         System.out.print("Enter rental type:");
         typeOfRent = scanner.nextLine();
         System.out.print("Enter room standard:");
@@ -94,7 +96,7 @@ public class House extends Services{
         System.out.println("Enter another comfort description:");
         descriptionOfOtherAmenities = scanner.nextLine();
         System.out.print("Enter number of floor:");
-        numberFloors = Integer.parseInt(scanner.nextLine());
+        numberFloors = RegexService.RegexNumberOfFloor();
         House house = new House(id, serviceName, areaUsed, rentalCosts, maxPeople, typeOfRent,
                 standardRoom, descriptionOfOtherAmenities, numberFloors);
         houseList.add(house);
