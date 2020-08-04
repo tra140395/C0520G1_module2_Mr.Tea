@@ -116,7 +116,7 @@ public class Villa extends Services {
     villaList.add(villa);
     }
 
-  public void writeVilla(){
+  public static void writeVilla(){
        final String FILE_VILLA_PATH = "src/Data/Villa.csv";
        List<Villa> villaWriteList = Villa.getVillaList();
       FileWriter fis = null;

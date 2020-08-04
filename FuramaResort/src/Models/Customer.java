@@ -1,11 +1,14 @@
 package models;
 
+import commons.ReadFileCustomer;
+import commons.SortByNameCustomer;
 import commons.UserRegexExceptionCustomer;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +17,8 @@ public class Customer {
     int cmnd, phone;
     Services services = null;
     private static List<Customer> customerList = new ArrayList<>();
-    public Customer(){
+
+    public Customer() {
 
     }
 
@@ -111,27 +115,27 @@ public class Customer {
         this.services = services;
     }
 
-   public static void addNewCustomer(){
-       Scanner scanner = new Scanner(System.in);
-       System.out.println("Enter the customer name: ");
-       String name = UserRegexExceptionCustomer.RegexInputNameCustomer();
-       System.out.println("Enter the customer's birthday: ");
-       String birthday = UserRegexExceptionCustomer.RegexInputBirthdayCustomer();
-       System.out.println("Enter the gender of the customer: ");
-       String gender = UserRegexExceptionCustomer.RegexInputGenderCustomer();
-       System.out.println("Enter the customers ID number: ");
-       int phone = Integer.parseInt(scanner.nextLine());
-       System.out.println("Enter the customer cmnd: ");
-       int cmnd = UserRegexExceptionCustomer.RegexInputCmndCustomer();
-       System.out.println("Enter the customer email: ");
-       String email = UserRegexExceptionCustomer.RegexInputEmailCustomer();
-       System.out.println("Enter the customers type: ");
-       String type = scanner.nextLine();
-       System.out.println("Enter the customers address: ");
-       String address = scanner.nextLine();
+    public static void addNewCustomer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the customer name: ");
+        String name = UserRegexExceptionCustomer.RegexInputNameCustomer();
+        System.out.println("Enter the customer's birthday: ");
+        String birthday = UserRegexExceptionCustomer.RegexInputBirthdayCustomer();
+        System.out.println("Enter the gender of the customer: ");
+        String gender = UserRegexExceptionCustomer.RegexInputGenderCustomer();
+        System.out.println("Enter the customers ID number: ");
+        int phone = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter the customer cmnd: ");
+        int cmnd = UserRegexExceptionCustomer.RegexInputCmndCustomer();
+        System.out.println("Enter the customer email: ");
+        String email = UserRegexExceptionCustomer.RegexInputEmailCustomer();
+        System.out.println("Enter the customers type: ");
+        String type = scanner.nextLine();
+        System.out.println("Enter the customers address: ");
+        String address = scanner.nextLine();
 
-       Customer customer = new Customer(name, birthday, gender, email, type, address, cmnd, phone);
-       customerList.add(customer);
+        Customer customer = new Customer(name, birthday, gender, email, type, address, cmnd, phone);
+        customerList.add(customer);
     }
 
     public static void writeCustomer() throws IOException {
@@ -161,13 +165,23 @@ public class Customer {
                 bufferedWriter.append("\n");
             }
             bufferedWriter.flush();
-            } catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
             bufferedWriter.close();
             fileWriter.close();
         }
-
     }
 
+    public static void sortCustomerList() {
+        Collections.sort(customerList, new SortByNameCustomer());
+        for (Customer customer : customerList) {
+            System.out.println(customer.getName() + " " + customer.getBirthDay() + " " + customer.getGender()
+                    + " " + customer.getEmail() + " " + customer.getTypeCustomer() + " " + customer.getAddress() + " "
+                    + customer.getCmnd() + " " + customer.getPhone());
+        }
+    }
 }
+
+
+

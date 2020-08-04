@@ -19,7 +19,7 @@ public class RegexService {
 
         return id;
     }
-    public static String RegexInputIdOfRoom() {
+    public static String RegexInputIdOfHouse() {
         String Regex = "SVHO-[\\d]{4}";
         String id;
         do {
@@ -32,7 +32,7 @@ public class RegexService {
 
         return id;
     }
-    public static String RegexInputIdOfHouse() {
+    public static String RegexInputIdOfRoom() {
         String Regex = "SVRO-[\\d]{4}";
         String id;
         do {

@@ -102,7 +102,7 @@ public class House extends Services{
         houseList.add(house);
     }
 
-    public void writeHouse(){
+    public static void writeHouse(){
         final String FILE_HOUSE_PATH = "src/Data/House.csv";
         List<House> houseWriteList = House.getHouseList();
         FileWriter fis = null;

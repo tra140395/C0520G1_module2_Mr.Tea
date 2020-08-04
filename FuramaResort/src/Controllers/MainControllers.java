@@ -1,5 +1,6 @@
 package controllers;
 
+import commons.ReadFileCustomer;
 import commons.ShowFile;
 import models.Customer;
 import models.House;
@@ -16,7 +17,6 @@ public class MainControllers {
     }
 
     public void displayMainMenu() throws IOException {
-        ShowFile showFile = new ShowFile();
         System.out.println("1. Add New Services");
         System.out.println("2. Show Services");
         System.out.println("3. Add New Customer");
@@ -43,12 +43,13 @@ public class MainControllers {
                     break;
                 }
                 case 4: {
-                  File file = new File("src/data/Customer.csv");
-                  showFile.show(file);
+                  ReadFileCustomer.readFileCustomer();
+                  Customer.sortCustomerList();
                   break;
                 }
                 case 5: {
-
+                    addNewBooking();
+                    break;
                 }
                 case 6: {
 
@@ -73,20 +74,18 @@ public class MainControllers {
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:{
-                    Villa villa = new Villa();
-                    villa.addNewVilla();
-                    villa.writeVilla();
+                    Villa.addNewVilla();
+                    Villa.writeVilla();
                     break;
                 }
                 case 2:{
-                    House house = new House();
-                    house.addNewHouse();
-                    house.writeHouse();
+                    House.addNewHouse();
+                    House.writeHouse();
                     break;
                 }
                 case 3:{
-                    Room room = new Room();
-                    room.addNewRoom();
+                    Room.addNewRoom();
+                    Room.writeRoom();
                     break;
                 }
                 case 4:{
@@ -119,17 +118,17 @@ public class MainControllers {
             switch (choice){
                 case 1: {
                         File file = new File("src/Data/Villa.csv");
-                        showFile.show(file);
+                        showFile.showVilla(file);
                         break;
                 }
                 case 2: {
                         File file = new File("src/Data/House.csv");
-                        showFile.show(file);
+                        showFile.showHouse(file);
                         break;
                 }
                 case 3: {
                         File file  = new File("src/Data/Room.csv");
-                        showFile.show(file);
+                        showFile.showRoom(file);
                         break;
                 }
                 case 4: {
@@ -150,6 +149,110 @@ public class MainControllers {
                 }
             }
         }
+
+    }
+
+    public static void addNewBooking(){
+        Scanner scanner = new Scanner(System.in);
+        ReadFileCustomer.readFileCustomer();
+        ReadFileCustomer.readFileCustomer();
+        System.out.println("Enter your id of Customer you wanna booking for : ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("1.Booking Villa");
+        System.out.println("2.Booking House");
+        System.out.println("3.Booking Room");
+        int choice = 0;
+        while (choice != -1){
+            System.out.println("Enter your choice:");
+            choice = Integer.parseInt(scanner.nextLine());
+            switch (choice){
+                case 1: {
+                    File file = new File("src/data/Booking.csv");
+                    ShowFile.showVilla(file);
+                    System.out.println("Enter the number of Service you want to booking for: ");
+                    int number = Integer.parseInt(scanner.nextLine());
+                    try {
+                        FileWriter fileWriter = new FileWriter(file, true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(Customer.getCustomerList().get(id).getCmnd()));
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getEmail());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Villa.getVillaList().get(number).getId());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Villa.getVillaList().get(number).getServiceName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(Villa.getVillaList().get(number).getAreaUsed()));
+                        bufferedWriter.flush();
+                        bufferedWriter.close();
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("Done!");
+
+                }
+                case 2: {
+                    File file = new File("src/data/Booking.csv");
+                    ShowFile.showHouse(file);
+                    System.out.println("Enter the number of Service you want to booking for: ");
+                    int number = Integer.parseInt(scanner.nextLine());
+                    try {
+                        FileWriter fileWriter = new FileWriter(file, true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(Customer.getCustomerList().get(id).getCmnd()));
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getEmail());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(House.getHouseList().get(number).getId());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(House.getHouseList().get(number).getServiceName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(House.getHouseList().get(number).getAreaUsed()));
+                        bufferedWriter.flush();
+                        bufferedWriter.close();
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("Done!");
+
+                }
+                case 3: {
+                    File file = new File("src/data/Booking.csv");
+                    ShowFile.showRoom(file);
+                    System.out.println("Enter the number of Service you want to booking for: ");
+                    int number = Integer.parseInt(scanner.nextLine());
+                    try {
+                        FileWriter fileWriter = new FileWriter(file, true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(Customer.getCustomerList().get(id).getCmnd()));
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Customer.getCustomerList().get(id).getEmail());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Room.getRoomList().get(number).getId());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(Room.getRoomList().get(number).getServiceName());
+                        bufferedWriter.append(",");
+                        bufferedWriter.append(String.valueOf(Room.getRoomList().get(number).getAreaUsed()));
+                        bufferedWriter.flush();
+                        bufferedWriter.close();
+                        fileWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("Done!");
+
+                }
+            }
+        }
+
 
     }
 

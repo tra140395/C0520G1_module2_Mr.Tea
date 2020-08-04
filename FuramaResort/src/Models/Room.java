@@ -2,6 +2,9 @@ package models;
 
 import commons.RegexService;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +21,14 @@ public class Room extends Services {
             , int maximumNumberOfPeople, String typeOfRent, ServiceIncluded serviceIncluded) {
         super(id, serviceName, areaUsed, rentalCosts, maximumNumberOfPeople, typeOfRent);
         this.serviceIncluded = serviceIncluded;
+    }
+
+    public static List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public static void setRoomList(List<Room> roomList) {
+        Room.roomList = roomList;
     }
 
     public ServiceIncluded getServiceIncluded() { return serviceIncluded; }
@@ -57,13 +68,46 @@ public class Room extends Services {
         typeOfRent = scanner.nextLine();
         System.out.println("Enter the Name of service:");
         String name = RegexService.RegexInputServicesIncluded();
-        System.out.println("Enter the Name of service:");
+        System.out.println("Enter the Unit of service:");
         int unit = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter the Name of service:");
+        System.out.println("Enter the Money of service:");
         double money = Double.parseDouble(scanner.nextLine());
         ServiceIncluded serviceIncluded = new ServiceIncluded(name,unit,money);
         Room room = new Room( id, serviceName, areaUsed, rentalCosts, maxPeople, typeOfRent,serviceIncluded);
         roomList.add(room);
     }
+
+    public static void writeRoom(){
+        final String FILE_ROOM_PATH = "src/data/Room.csv";
+        List<Room> roomWriteList = Room.getRoomList();
+        FileWriter fis = null;
+        BufferedWriter fos = null;
+        try{
+            fis = new FileWriter(FILE_ROOM_PATH,true);
+            fos = new BufferedWriter(fis);
+            for (Room room : roomWriteList) {
+                fos.append(room.getId());
+                fos.append(",");
+                fos.append(room.getServiceName());
+                fos.append(",");
+                fos.append(String.valueOf(room.getAreaUsed()));
+                fos.append(",");
+                fos.append(String.valueOf(room.getRentalCosts()));
+                fos.append(",");
+                fos.append(String.valueOf(room.getMaximumNumberOfPeople()));
+                fos.append(",");
+                fos.append(room.getTypeOfRent());
+                fos.append(",");
+                fos.append(String.valueOf(room.getServiceIncluded()));
+            }
+            fos.flush();
+            fos.close();
+            fis.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
