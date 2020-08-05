@@ -6,9 +6,9 @@ import models.Customer;
 import models.House;
 import models.Room;
 import models.Villa;
-
 import java.io.*;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class MainControllers {
    Scanner scanner = new Scanner(System.in);
@@ -101,6 +101,7 @@ public class MainControllers {
     }
 
     public void showServices() throws IOException {
+        MainControllers mainControllers = new MainControllers();
         ShowFile showFile = new ShowFile();
         System.out.println("1. Show all Villa");
         System.out.println("2. Show all House");
@@ -132,13 +133,28 @@ public class MainControllers {
                         break;
                 }
                 case 4: {
-
+                    TreeSet<Villa> villaTreeSet = new TreeSet<>();
+                    villaTreeSet.addAll(Villa.getVillaList());
+                    for (Villa villa: villaTreeSet) {
+                        villa.showInformation();
+                    }
+                    mainControllers.displayMainMenu();
                 }
                 case 5: {
-
+                 TreeSet<House> houseTreeSet = new TreeSet<>();
+                 houseTreeSet.addAll(House.getHouseList());
+                 for (House house: houseTreeSet){
+                     house.showInformation();
+                 }  
+                 mainControllers.displayMainMenu();
                 }
                 case 6: {
-
+                 TreeSet<Room> roomTreeSet = new TreeSet<>();
+                 roomTreeSet.addAll(Room.getRoomList());
+                    for (Room room: roomTreeSet) {
+                        room.showInformation();
+                    }
+                    mainControllers.displayMainMenu();
                 }
                 case 7: {
                         displayMainMenu();
