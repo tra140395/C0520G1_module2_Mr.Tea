@@ -99,6 +99,7 @@ public class Room extends Services {
                 fos.append(room.getTypeOfRent());
                 fos.append(",");
                 fos.append(String.valueOf(room.getServiceIncluded()));
+                fos.append("\n");
             }
             fos.flush();
             fos.close();
@@ -107,6 +108,7 @@ public class Room extends Services {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        roomList.clear();
     }
 
 

@@ -2,16 +2,16 @@ package controllers;
 
 import commons.ReadFileCustomer;
 import commons.ShowFile;
-import models.Customer;
-import models.House;
-import models.Room;
-import models.Villa;
+import models.*;
+import views.FilingCabinetsOfEmployee;
+import views.Movie4d;
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.TreeSet;
 
 public class MainControllers {
-   Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public MainControllers() {
     }
@@ -23,9 +23,11 @@ public class MainControllers {
         System.out.println("4. Show Information of Customer");
         System.out.println("5. Add New Booking");
         System.out.println("6. Show Information of Employee");
-        System.out.println("7. Exit");
+        System.out.println("7. Show customer movie list");
+        System.out.println("8. Find Employee");
+        System.out.println("9. Exit");
         int choice = 0;
-        while (choice != 7) {
+        while (choice != 9) {
             System.out.println("Enter your choice: ");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
@@ -43,18 +45,28 @@ public class MainControllers {
                     break;
                 }
                 case 4: {
-                  ReadFileCustomer.readFileCustomer();
-                  Customer.sortCustomerList();
-                  break;
+                    ReadFileCustomer.readFileCustomer();
+                    Customer.sortCustomerList();
+                    break;
                 }
                 case 5: {
                     addNewBooking();
                     break;
                 }
                 case 6: {
-
+                    EmployeeManager.getEmployee();
+                    break;
                 }
                 case 7: {
+                    Movie4d.addMovieList();
+                    break;
+                }
+                case 8: {
+                    FilingCabinetsOfEmployee.addEmployeeToStack();
+                    FilingCabinetsOfEmployee.findEmployee();
+                    break;
+                }
+                case 9: {
                     System.exit(0);
                 }
             }
@@ -69,30 +81,30 @@ public class MainControllers {
         System.out.println("4. Back to menu");
         System.out.println("5. Exit");
         int choice = 0;
-        while (choice != 5){
+        while (choice != 5) {
             System.out.println("Enter your choice: ");
             choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
-                case 1:{
+            switch (choice) {
+                case 1: {
                     Villa.addNewVilla();
                     Villa.writeVilla();
                     break;
                 }
-                case 2:{
+                case 2: {
                     House.addNewHouse();
                     House.writeHouse();
                     break;
                 }
-                case 3:{
+                case 3: {
                     Room.addNewRoom();
                     Room.writeRoom();
                     break;
                 }
-                case 4:{
-                 displayMainMenu();
-                 break;
+                case 4: {
+                    displayMainMenu();
+                    break;
                 }
-                case 5:{
+                case 5: {
                     System.exit(0);
                 }
             }
@@ -102,7 +114,6 @@ public class MainControllers {
 
     public void showServices() throws IOException {
         MainControllers mainControllers = new MainControllers();
-        ShowFile showFile = new ShowFile();
         System.out.println("1. Show all Villa");
         System.out.println("2. Show all House");
         System.out.println("3. Show all Room");
@@ -113,75 +124,110 @@ public class MainControllers {
         System.out.println("8. Exit");
 
         int choice = 0;
-        while (choice != 8){
+        while (choice != 8) {
             System.out.println("Enter your choice: ");
             choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
+            switch (choice) {
                 case 1: {
-                        File file = new File("src/Data/Villa.csv");
-                        showFile.showVilla(file);
-                        break;
+                    File file = new File("src/Data/Villa.csv");
+                    ShowFile.showVilla(file);
+                    break;
                 }
                 case 2: {
-                        File file = new File("src/Data/House.csv");
-                        showFile.showHouse(file);
-                        break;
+                    File file = new File("src/Data/House.csv");
+                    ShowFile.showHouse(file);
+                    break;
                 }
                 case 3: {
-                        File file  = new File("src/Data/Room.csv");
-                        showFile.showRoom(file);
-                        break;
+                    File file = new File("src/Data/Room.csv");
+                    ShowFile.showRoom(file);
+                    break;
                 }
                 case 4: {
                     TreeSet<Villa> villaTreeSet = new TreeSet<>();
-                    villaTreeSet.addAll(Villa.getVillaList());
-                    for (Villa villa: villaTreeSet) {
-                        villa.showInformation();
+                    BufferedReader bufferedReader = null;
+                    try {
+                        bufferedReader = new BufferedReader(new FileReader("src/Data/Villa.csv"));
+                        String line = null;
+                        String[] arrTemp;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            arrTemp = line.split(",");
+                            Villa villa = new Villa(arrTemp[0], arrTemp[1], Double.parseDouble(arrTemp[2]),
+                                    Double.parseDouble(arrTemp[3]), Integer.parseInt(arrTemp[4]),
+                                    arrTemp[5], arrTemp[6], arrTemp[7], Double.parseDouble(arrTemp[8]), Integer.parseInt(arrTemp[9]));
+                            villaTreeSet.add(villa);
+                        }
+                        for (Villa villa : villaTreeSet) {
+                            villa.showInformation();
+                        }
+                        mainControllers.displayMainMenu();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    mainControllers.displayMainMenu();
                 }
                 case 5: {
-                 TreeSet<House> houseTreeSet = new TreeSet<>();
-                 houseTreeSet.addAll(House.getHouseList());
-                 for (House house: houseTreeSet){
-                     house.showInformation();
-                 }  
-                 mainControllers.displayMainMenu();
+                    TreeSet<House> houseTreeSet = new TreeSet<>();
+                    BufferedReader bufferedReader = null;
+                    try {
+                        bufferedReader = new BufferedReader(new FileReader("src/Data/House.csv"));
+                        String line = null;
+                        String[] arrTemp;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            arrTemp = line.split(",");
+                            House house = new House(arrTemp[0], arrTemp[1], Double.parseDouble(arrTemp[2]),
+                                    Double.parseDouble(arrTemp[3]), Integer.parseInt(arrTemp[4]),
+                                    arrTemp[5], arrTemp[6], arrTemp[7], Integer.parseInt(arrTemp[9]));
+                            houseTreeSet.add(house);
+                        }
+                        for (House house : houseTreeSet) {
+                            house.showInformation();
+                        }
+                        mainControllers.displayMainMenu();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
                 case 6: {
-                 TreeSet<Room> roomTreeSet = new TreeSet<>();
-                 roomTreeSet.addAll(Room.getRoomList());
-                    for (Room room: roomTreeSet) {
+                    // maybe error!!! yahahahhahahaha... When i got dev 2 i will comeback and fix this hard bug.......
+                    // maybe bug in ShowFile.showRoom()
+                    TreeSet<Room> roomTreeSet = new TreeSet<>();
+                    roomTreeSet.addAll(Room.getRoomList());
+                    for (Room room : roomTreeSet) {
                         room.showInformation();
                     }
                     mainControllers.displayMainMenu();
                 }
                 case 7: {
-                        displayMainMenu();
-                        break;
+                    displayMainMenu();
+                    break;
                 }
                 case 8: {
-                        System.exit(0);
+                    System.exit(0);
                 }
             }
         }
 
     }
 
-    public static void addNewBooking(){
+    public static void addNewBooking() {
         Scanner scanner = new Scanner(System.in);
         ReadFileCustomer.readFileCustomer();
-        ReadFileCustomer.readFileCustomer();
-        System.out.println("Enter your id of Customer you wanna booking for : ");
+        System.out.println("Enter your id of Customer you wanna to booking for : ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.println("1.Booking Villa");
         System.out.println("2.Booking House");
         System.out.println("3.Booking Room");
         int choice = 0;
-        while (choice != -1){
+        while (choice != -1) {
             System.out.println("Enter your choice:");
             choice = Integer.parseInt(scanner.nextLine());
-            switch (choice){
+            switch (choice) {
                 case 1: {
                     File file = new File("src/data/Booking.csv");
                     ShowFile.showVilla(file);

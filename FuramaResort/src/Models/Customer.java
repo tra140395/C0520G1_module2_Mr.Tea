@@ -22,6 +22,13 @@ public class Customer {
 
     }
 
+    public Customer(String name, String birthDay, String gender, String email) {
+        this.name = name;
+        this.birthDay = birthDay;
+        this.gender = gender;
+        this.email = email;
+    }
+
     public Customer(String name, String birthDay, String gender, String email,
                     String typeCustomer, String address, int cmnd, int phone) {
         this.name = name;
@@ -32,7 +39,6 @@ public class Customer {
         this.address = address;
         this.cmnd = cmnd;
         this.phone = phone;
-//        this.services = services;
     }
 
     public static List<Customer> getCustomerList() {

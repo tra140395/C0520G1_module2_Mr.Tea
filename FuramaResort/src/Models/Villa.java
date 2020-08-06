@@ -17,7 +17,7 @@ public class Villa extends Services {
     private int numberOfFloors;
     private static List<Villa> villaList = new ArrayList<>();
 
-    public Villa(){
+    public Villa() {
 
     }
 
@@ -77,7 +77,7 @@ public class Villa extends Services {
                         "; Service Name: " + super.getServiceName() +
                         "; Area Used: " + super.getAreaUsed() +
                         "; Rental Costs: " + super.getRentalCosts() +
-                        "; Max Number Of People: " + super.getMaximumNumberOfPeople()+
+                        "; Max Number Of People: " + super.getMaximumNumberOfPeople() +
                         "; Type Rent: " + super.getTypeOfRent() +
                         "; Room Standard: " + this.standardRoom +
                         "; Convenient Description: " + this.descriptionOfOtherAmenities +
@@ -86,7 +86,7 @@ public class Villa extends Services {
         );
     }
 
-    public static void addNewVilla(){
+    public static void addNewVilla() {
         String id, typeOfRent, serviceName, standardRoom, descriptionOfOtherAmenities;
         double areaUsed, rentalCosts, poolArea;
         int maximumNumberOfPeople, numberOfFloors;
@@ -111,50 +111,47 @@ public class Villa extends Services {
         poolArea = Double.parseDouble(scanner.nextLine());
         System.out.print("Enter number of floor:");
         numberOfFloors = RegexService.RegexNumberOfFloor();
-    Villa villa = new Villa(id, serviceName, areaUsed, rentalCosts, maximumNumberOfPeople, typeOfRent,
-            standardRoom, descriptionOfOtherAmenities, poolArea, numberOfFloors);
-    villaList.add(villa);
+        Villa villa = new Villa(id, serviceName, areaUsed, rentalCosts, maximumNumberOfPeople, typeOfRent,
+                standardRoom, descriptionOfOtherAmenities, poolArea, numberOfFloors);
+        villaList.add(villa);
     }
 
-  public static void writeVilla(){
-       final String FILE_VILLA_PATH = "src/Data/Villa.csv";
-       List<Villa> villaWriteList = Villa.getVillaList();
-      FileWriter fis = null;
-      BufferedWriter fos = null;
-      try{
-          fis = new FileWriter(FILE_VILLA_PATH,true);
-          fos = new BufferedWriter(fis);
-          for (Villa villa : villaWriteList) {
-              fos.append(villa.getId());
-              fos.append(",");
-              fos.append(villa.getServiceName());
-              fos.append(",");
-              fos.append(String.valueOf(villa.getAreaUsed()));
-              fos.append(",");
-              fos.append(String.valueOf(villa.getRentalCosts()));
-              fos.append(",");
-              fos.append(String.valueOf(villa.getMaximumNumberOfPeople()));
-              fos.append(",");
-              fos.append(villa.getTypeOfRent());
-              fos.append(",");
-              fos.append(villa.getStandardRoom());
-              fos.append(",");
-              fos.append(villa.getDescriptionOfOtherAmenities());
-              fos.append(",");
-              fos.append(String.valueOf(villa.getPoolArea()));
-              fos.append(",");
-              fos.append(String.valueOf(villa.getNumberOfFloors()));
-              fos.append("\n");
-          }
-              fos.flush();
-          fos.close();
-          fis.close();
-
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-  }
-
-
-
+    public static void writeVilla() {
+        final String FILE_VILLA_PATH = "src/Data/Villa.csv";
+        List<Villa> villaWriteList = Villa.getVillaList();
+        FileWriter fis = null;
+        BufferedWriter fos = null;
+        try {
+            fis = new FileWriter(FILE_VILLA_PATH, true);
+            fos = new BufferedWriter(fis);
+            for (Villa villa : villaWriteList) {
+                fos.append(villa.getId());
+                fos.append(",");
+                fos.append(villa.getServiceName());
+                fos.append(",");
+                fos.append(String.valueOf(villa.getAreaUsed()));
+                fos.append(",");
+                fos.append(String.valueOf(villa.getRentalCosts()));
+                fos.append(",");
+                fos.append(String.valueOf(villa.getMaximumNumberOfPeople()));
+                fos.append(",");
+                fos.append(villa.getTypeOfRent());
+                fos.append(",");
+                fos.append(villa.getStandardRoom());
+                fos.append(",");
+                fos.append(villa.getDescriptionOfOtherAmenities());
+                fos.append(",");
+                fos.append(String.valueOf(villa.getPoolArea()));
+                fos.append(",");
+                fos.append(String.valueOf(villa.getNumberOfFloors()));
+                fos.append("\n");
+            }
+            fos.flush();
+            fos.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        villaList.clear();
+    }
 }

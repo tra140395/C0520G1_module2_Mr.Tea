@@ -133,10 +133,10 @@ public class House extends Services{
             fos.flush();
             fos.close();
             fis.close();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+        houseList.clear();
     }
 
 

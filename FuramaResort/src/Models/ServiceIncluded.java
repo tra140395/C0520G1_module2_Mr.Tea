@@ -37,8 +37,8 @@ public class ServiceIncluded {
 
     @Override
     public String toString() {
-        return nameOfService +","+
-                 unitOfService+","+
+        return nameOfService +", "+
+                 unitOfService+", "+
                 + moneyOfService ;
     }
 }
