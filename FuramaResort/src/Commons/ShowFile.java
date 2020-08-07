@@ -94,10 +94,8 @@ public class ShowFile {
             int stt = 0;
             while ((line = bufferedReader.readLine()) != null) {
                 arrTemp = line.split(",");
-                System.out.println(arrTemp[6] + Integer.parseInt(arrTemp[7]) + Double.parseDouble(arrTemp[8]));
                 ServiceIncluded serviceIncluded = new ServiceIncluded(arrTemp[6], Integer.parseInt(arrTemp[7]),
                         Double.parseDouble(arrTemp[8]));
-                System.out.println(serviceIncluded);
                 Room room = new Room(arrTemp[0], arrTemp[1], Double.parseDouble(arrTemp[2]),
                         Double.parseDouble(arrTemp[3]), Integer.parseInt(arrTemp[4]),
                         arrTemp[5],serviceIncluded);

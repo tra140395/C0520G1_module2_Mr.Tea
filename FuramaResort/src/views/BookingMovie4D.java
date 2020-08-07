@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Movie4d {
+public class BookingMovie4D {
     static Queue<Customer> movieList = new LinkedList<>();
     public static void addMovieList(){
         ReadFileCustomer.readFileCustomer();

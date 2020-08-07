@@ -4,7 +4,7 @@ import commons.ReadFileCustomer;
 import commons.ShowFile;
 import models.*;
 import views.FilingCabinetsOfEmployee;
-import views.Movie4d;
+import views.BookingMovie4D;
 
 import java.io.*;
 import java.util.Scanner;
@@ -58,7 +58,7 @@ public class MainControllers {
                     break;
                 }
                 case 7: {
-                    Movie4d.addMovieList();
+                    BookingMovie4D.addMovieList();
                     break;
                 }
                 case 8: {
@@ -194,8 +194,6 @@ public class MainControllers {
                     }
                 }
                 case 6: {
-                    // maybe error!!! yahahahhahahaha... When i got dev 2 i will comeback and fix this hard bug.......
-                    // maybe bug in ShowFile.showRoom()
                     TreeSet<Room> roomTreeSet = new TreeSet<>();
                     roomTreeSet.addAll(Room.getRoomList());
                     for (Room room : roomTreeSet) {
