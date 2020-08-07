@@ -41,7 +41,6 @@ public class Service {
     }
 
     public void writeWord(List<Word> list, boolean append) {
-        addNewWord();
         final String FILE_DATA_PATH = "src/data/DataWords.csv";
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
@@ -92,9 +91,9 @@ public class Service {
             String[] arrTemp;
             while ((line = bufferedReader.readLine()) != null) {
                 arrTemp = line.split(",");
-                Word words = new Word(arrTemp[0], arrTemp[1], arrTemp[2], arrTemp[3],
+                Word word = new Word(arrTemp[0], arrTemp[1], arrTemp[2], arrTemp[3],
                         arrTemp[4], arrTemp[5], arrTemp[6], arrTemp[7], arrTemp[8]);
-                wordsReadList.add(words);
+                wordsReadList.add(word);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -107,24 +106,22 @@ public class Service {
     public void lookUpWord() {
         readList();
         System.out.println("Enter the word you want to check: ");
-        String word = scanner.nextLine();
+        String findWord = scanner.nextLine();
         for (Word words : wordsReadList) {
-            if (word.contains(words.getWordName())) {
-                words.toString();
+            if (words.getWordName().contains(findWord)) {
+                System.out.println(words.toString());
             }
         }
     }
 
     public void additionalDefinition() {
         System.out.println("Enter the word you want to additional: ");
-        String word = scanner.nextLine();
+        String newWord = scanner.nextLine();
         readList();
-        for (Word word1:wordsReadList ) {
-            if(!word1.getWordName().equals(word)){
-                System.out.println("The word does not exist in the dictionary. Create new word in dictionary: ");
-                addNewWord();
-                writeWord(wordsList,true);
-            }else {
+        boolean check = false;
+        for (Word word1 : wordsReadList) {
+            if (word1.getWordName().equals(newWord)) {
+                check = true;
                 System.out.println("1. Addition noun");
                 System.out.println("2. Addition example of noun");
                 System.out.println("3. Addition adjective");
@@ -135,70 +132,84 @@ public class Service {
                 System.out.println("8. Back to main menu");
                 System.out.println("9. Exit");
                 int choice = 0;
-                while (choice != 9){
-                    System.out.println("Enter your choice:");
-                    switch (choice){
+                while (choice != 9) {
+                    System.out.println("Enter your choice to edit:");
+                    choice = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (choice) {
                         case 1: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setNoun(word1.getNoun()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setNoun(word1.getNoun()+"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 2: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setExampleOfNoun(word1.getExampleOfNoun()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setExampleOfNoun(word1.getExampleOfNoun() +"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 3: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setAdjective(word1.getAdjective()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setAdjective(word1.getAdjective() +"-"+ info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 4: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setExampleOfAdjective(word1.getExampleOfAdjective()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setExampleOfAdjective(word1.getExampleOfAdjective() +"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 5: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setVerb(word1.getVerb()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setVerb(word1.getVerb() +"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 6: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setExampleOfVerb(word1.getExampleOfVerb()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setExampleOfVerb(word1.getExampleOfVerb() +"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 7: {
                             System.out.println("Enter information you want to add: ");
                             String info = scanner.nextLine();
-                            word1.setSimilar(word1.getSimilar()+"; " + info);
-                            writeWord(wordsReadList,false);
+                            word1.setSimilar(word1.getSimilar() +"-" + info);
+                            writeWord(wordsReadList, false);
                             System.out.println("Done!!");
+                            break;
                         }
                         case 8: {
                             Controller.displayMainMenu();
+                            break;
                         }
                         case 9: {
-                             System.exit(0);
+                            System.exit(0);
+                            break;
                         }
                     }
                 }
-
             }
         }
-
+        if(!check){
+            System.out.println("The word does not exist in the dictionary. Create new word in dictionary: ");
+            addNewWord();
+            writeWord(wordsList, true);
+        }
     }
 
     public void dropWord() {
@@ -223,14 +234,14 @@ public class Service {
             if (!file.exists()) {
                 throw new FileNotFoundException();
             }
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file,false));
             readList();
-        for (Word words : wordsReadList) {
-            bufferedWriter.write(String.valueOf(words));
-            bufferedWriter.write("\n");
-        }
+            for (Word words : wordsReadList) {
+                bufferedWriter.write(String.valueOf(words));
+                bufferedWriter.write("\n");
+            }
             bufferedWriter.close();
-            wordsList.clear();
+            wordsReadList.clear();
             System.out.println("Done!!");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

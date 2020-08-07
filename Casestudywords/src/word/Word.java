@@ -103,14 +103,13 @@ public class Word {
     @Override
     public String toString() {
         return "@@@@@ Action: Lookup "+ wordName +'\n'+
-                "* Phát âm " + pronoun + '\n' +
-                "* Danh từ " + noun + '\'' +
-                " - Ví dụ " + exampleOfNoun + '\n' +
-                "* Tính từ " + adjective + '\'' +
-                " - Ví dụ " + exampleOfAdjective + '\n' +
-                "* Động từ " + verb + '\'' +
-                " - Ví dụ " + exampleOfVerb + '\n' +
-                "* Tương đồng " + similar + '\'' +
-                '}'+"\n";
+                "* Phát âm: " + pronoun + '\n' +
+                "* Danh từ: " + noun + '\'' +
+                " - Ví dụ: " + exampleOfNoun + '\n' +
+                "* Tính từ: " + adjective + '\'' +
+                " - Ví dụ: " + exampleOfAdjective + '\n' +
+                "* Động từ: " + verb + '\'' +
+                " - Ví dụ: " + exampleOfVerb + '\n' +
+                "* Tương đồng: " + similar +"\n";
     }
 }
