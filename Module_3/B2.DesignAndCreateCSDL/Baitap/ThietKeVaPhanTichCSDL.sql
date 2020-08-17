@@ -1,101 +1,100 @@
-create database phantichvathietkeCSDL;
-use phantichvathietkeCSDL;
+create database phan_tich_va_thiet_ke_CSDL;
+use phan_tich_va_thiet_ke_CSDL;
 
 /* tao customer - khach hang */
 create table cutomers (
-    customerNumber int primary key,
-    customerName varchar(50) not null,
-    contactLastname varchar(50) not null,
-    contactFirstname varchar(50) not null,
+    customer_number int primary key,
+    customer_name varchar(50) not null,
+    contact_last_name varchar(50) not null,
+    contact_first_name varchar(50) not null,
     phone varchar(50) not null,
-    addressLine1 varchar(50) not null,
-    addressLine2 varchar(50),
+    address_line1 varchar(50) not null,
+    address+line2 varchar(50),
     city varchar(50) not null,
     state varchar(50) not null,
-    postalCode varchar(15) not null,
+    postal_code varchar(15) not null,
     country varchar(50) not null,
-    creditLimit float,
-    salesRepEpriseeNumber int not null,
-    foreign key(salesRepEpriseeNumber) references employees(employeeNumber)
+    credit_limit float,
+    sales_rep_eprisee_number int not null,
+    foreign key(sales_rep_eprisee_number) references employees(employee_number)
 );
 
 /* tao orders - hoa don*/
 create table orders (
-    orderNumber int primary key,
-    orderDate date not null,
-    requiredDate date not null,
-    shippedDate date,
+    order_number int primary key,
+    order_date date not null,
+    required_date date not null,
+    shipped_date date,
     statuss varchar(15) not null,
     comments text,
-    quantityOdered int not null,
-    pricEach float not null,
-    customerNumber int not null,
-    foreign key (customerNumber)
-        references cutomers(customerNumber)
+    quantity_odered int not null,
+    pric_each float not null,
+    customer_number int not null,
+    foreign key (customer_number)
+        references cutomers(customer_number)
 );
 
 /* tao payments - thanh toan*/
 create table payments (
-    customerNumber int not null,
-    checkNumber varchar(50) not null,
-    paymentDay date not null,
+    customer_number int not null,
+    check_number varchar(50) not null,
+    payment_day date not null,
     amount float not null,
-    foreign key (customerNumber)
-        references cutomers (customerNumber)
-);
-
-/* tao products - san pham*/
-create table products (
-    productCode varchar(15) primary key,
-    productName varchar(70) not null,
-    productScale varchar(10) not null,
-    productVendor varchar(50) not null,
-    productDescription text not null,
-    quantityInStoke int not null,
-    buyPrice float not null,
-    MSRP float not null,
-    productLine varchar(50) not null,
-    foreign key(productLine) references productLines(productLine)
-);
-
-/* tao productorders - bang moi sinh ra do mqh (N:M) giua products va orders)*/
-create table productOrders (
-    productCode varchar(15) not null,
-    orderNumber int not null,
-    primary key (productCode , orderNumber),
-    foreign key (productCode)
-        references products (productCode),
-    foreign key (orderNumber)
-        references orders (orderNumber)
+    foreign key (customer_number)
+        references cutomers (customer_number)
 );
 
 /* tao productlines - dong san pham*/
-create table productLines(
-productLine varchar(50) primary key,
-textDescription text,
+create table product_lines(
+product_line varchar(50) primary key,
+text_description text,
 image varchar(50)
+);
+
+create table products (
+    product_code varchar(15) primary key,
+    product_name varchar(70) not null,
+    product_scale varchar(10) not null,
+    product_vendor varchar(50) not null,
+    product_description text not null,
+    quantity_inStoke int not null,
+    buy_price float not null,
+    MSRP float not null,
+    product_line varchar(50) not null,
+    foreign key(product_line) references product_lines(product_line)
+);
+
+/* tao productorders - bang moi sinh ra do mqh (N:M) giua products va orders)*/
+create table product_orders (
+    product_code varchar(15) not null,
+    order_number int not null,
+    primary key (product_code , order_number),
+    foreign key (product_code)
+        references products (product_code),
+    foreign key (order_number)
+        references orders (order_number)
 );
 
 /* tao imployees - nhan vien*/
 create table employees (
-    employeeNumber int primary key,
-    lastName varchar(50) not null,
-    firstNamr varchar(50) not null,
+    employee_number int primary key,
+    last_name varchar(50) not null,
+    first_namr varchar(50) not null,
     email varchar(100) not null,
-    jobTitle varchar(50) not null,
-    officeCode varchar(50) not null,
-    foreign key(officeCode) references offices(officeCode)
+    job_title varchar(50) not null,
+    office_code varchar(50) not null,
+    foreign key(office_code) references offices(office_code)
 );
 
 /* tao offices - van phong*/
 create table offices (
-    officeCode varchar(10) primary key,
+    office_code varchar(10) primary key,
     city varchar(50) not null,
     phone varchar(50) not null,
-    addressLine1 varchar(50) not null,
-    addressLine varchar(50),
+    address_line1 varchar(50) not null,
+    address_line varchar(50),
     state varchar(50),
     country varchar(50) not null,
-    postalCode varchar(15) not null
+    postal_code varchar(15) not null
 );
 
