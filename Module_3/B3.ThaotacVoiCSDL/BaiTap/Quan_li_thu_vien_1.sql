@@ -1,3 +1,5 @@
+drop database if exists quan_ly_thu_vien_1;
+
 create database quan_ly_thu_vien_1;
 use quan_ly_thu_vien_1;
 
@@ -7,8 +9,8 @@ create table sinh_vien(
   ten_sv varchar(50) not null,
   ngay_sinh date not null,
   mail varchar(50) not null,
-  phone varchar(10) not null,
-  address varchar(50) not null
+  dien_thoai varchar(10) not null,
+  dia_chi_sv varchar(50) not null
   );
   
 /* tao bang the sv */
@@ -23,7 +25,7 @@ create table nhan_vien(
   ma_nv int primary key,
   ten_nv varchar(50) not null,
   gioi_tinh varchar(10) not null,
-  address varchar(50) not null
+  dia_chi_nv varchar(50) not null
   );
   
 /* Tao bang loai sach*/
@@ -33,13 +35,13 @@ create table loai_sach(
   );
   
 /* tao bang book*/
-create table book(
+create table sach(
   ma_sach int primary key,
   ten_sach varchar(50) not null,
   nha_xuat_ban varchar(50) not null,
   tac_gia varchar(50) not null,
   nam_xuat_ban date not null,
-  price float not null,
+  gia float not null,
   ma_loai_sach int not null,
   foreign key(ma_loai_sach) references loai_sach(ma_loai_sach)
   );
@@ -53,7 +55,7 @@ create table phieu_muon(
   ma_nv int not null,
   constraint phieu_muon_pk primary key(ma_the,ma_nv,ngay_muon),
   foreign key(ma_the) references the_sv(ma_the),
-  foreign key(ma_sach) references book(ma_sach),
+  foreign key(ma_sach) references sach(ma_sach),
   foreign key(ma_nv) references nhan_vien(ma_nv)
   );
   
