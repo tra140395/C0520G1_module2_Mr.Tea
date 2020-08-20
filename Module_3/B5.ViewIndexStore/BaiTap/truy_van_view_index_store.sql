@@ -49,7 +49,7 @@ create procedure show_all_product()
     select * 
       from products;
   end; $$
- DELIMITER;
+ DELIMITER ;
 call show_all_product();
 
 /*Tạo store procedure thêm một sản phẩm mới*/
@@ -59,7 +59,7 @@ create procedure add_new_product(id int, `code` varchar(10),`name` varchar(50), 
   begin
     insert into products values (id,`code`,`name`,price,amount,`description`,`status`);
   end; $$
- DELIMITER;
+ DELIMITER ;
 call add_new_product(6,'SP6','Tai nghe','300k','2','iphone','Done');
  
 /*Tạo store procedure sửa thông tin sản phẩm theo id*/
@@ -77,7 +77,7 @@ create procedure edit_product(id int, `code` varchar(10),`name` varchar(50), pri
      product_status = `status`
     where products.id = id;
   end; $$
-DELIMITER;
+DELIMITER ;
 call edit_product(3,'SP3','Dieu hoa','7000k','1','panasonic','Done');
 
 DELIMITER $$
@@ -87,5 +87,5 @@ create procedure delete_product(id int)
        from products
        where products.id = id;
   end; $$
-DELIMITER;
+DELIMITER ;
 call delete_product(2);
