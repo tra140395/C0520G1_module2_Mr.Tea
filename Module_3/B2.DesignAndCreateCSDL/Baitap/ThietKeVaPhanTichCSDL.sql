@@ -9,7 +9,7 @@ create table cutomers (
     contact_first_name varchar(50) not null,
     phone varchar(50) not null,
     address_line1 varchar(50) not null,
-    address+line2 varchar(50),
+    address_line2 varchar(50),
     city varchar(50) not null,
     state varchar(50) not null,
     postal_code varchar(15) not null,
