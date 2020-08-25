@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c2e7921-8667-431e-8cf3-6358a11ab6f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/NhungCssVaoTrangHtml.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/NhungVaoTrangHtml.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/NhungVaoVietNamVanBan.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/TrangDocTruyenNgan.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/VietNamVanBan.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/TruyeCuoi.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/Truyen_ngan.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/BaiTap/Tao_layout_voi_RWD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/Demo/Test reponsitory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/ThucHanh/Nhung-vao-TaoBoCucCoBan.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/ThucHanh/SuDungBoxModel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/ThucHanh/TaoBoCucCoBan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/TrangDocTruyenNgan.html" beforeDir="false" afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/TrangDocTruyenNgan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/VietNamVanBan.html" beforeDir="false" afterPath="$PROJECT_DIR$/B6.Cascading Style Stylesheet/BaiTap/VietNamVanBan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +67,9 @@
       <option name="presentableId" value="Default" />
       <updated>1597899439449</updated>
       <workItem from="1597899440704" duration="10475000" />
+      <workItem from="1598233357726" duration="13220000" />
+      <workItem from="1598276611414" duration="2408000" />
+      <workItem from="1598319061614" duration="2709000" />
     </task>
     <servers />
   </component>
@@ -68,9 +77,17 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="410" y="194" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598241110742">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="410" y="194" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1598241110742" />
     <state x="439" y="164" key="FileChooserDialogImpl" timestamp="1597921986831">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="439" y="164" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1597921986830" />
+    <state x="314" y="178" key="run.anything.popup" timestamp="1598240091227">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="314" y="178" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1598240091227" />
   </component>
 </project>

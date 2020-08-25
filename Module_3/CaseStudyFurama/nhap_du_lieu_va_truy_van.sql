@@ -190,7 +190,12 @@ select ho_ten_kh
        /* cach 2 */
 select distinct ho_ten_kh
    from khach_hang;
-   
+       /*cach 3*/
+select ho_ten_kh
+   from khach_hang
+union
+select ho_ten_kh
+   from khach_hang;
   /*9.	Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2019 
  thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.*/
 select ngay_lam_hd, count(id_kh) as 'so luong khach '
@@ -259,7 +264,7 @@ select dich_vu_di_kem.id_dv_di_kem,ten_dv_di_kem,gia_dv_di_kem,don_vi,trang_thai
  
  /* 15.	Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo, TenBoPhan, 
  SoDienThoai, DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.*/
-           /* cach 1 chua loc dieu kien < 3 */
+           /* cach 1 chua loc dieu kien <= 3 */
 select nhan_vien.id_nv,ho_ten_nv,trnh_do,ten_bo_phan,sdt_nv,dia_chi_nv,count(hop_dong.id_nv) 
  as'so_lan_lam_hd'
   from nhan_vien
@@ -269,7 +274,7 @@ select nhan_vien.id_nv,ho_ten_nv,trnh_do,ten_bo_phan,sdt_nv,dia_chi_nv,count(hop
 where year(ngay_lam_hd) in(2018,2019)
 group by nhan_vien.id_nv;
 
-		  /* cach 2*/
+		  /* cach 2 ok*/
 create view so_luong_hd_2018_2019  as
  select *
    from hop_dong 
@@ -290,8 +295,7 @@ create view so_luong_hd_2017_2019 as
    from hop_dong 
  where year(ngay_lam_hd) in(2017,2018,2019);
  
-delete 
-  from nhan_vien
+delete from nhan_vien
 where nhan_vien.id_nv not in (select so_luong_hd_2017_2019.id_nv
                                   from so_luong_hd_2017_2019);
  
