@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facebook</title>
+    <style>
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        [class*='col-'] {
+            float: left;
+            padding:5px;
+        }
+
+        .header {
+            background-color: #CDCDCD;
+        }
+
+        .menu {
+            background-color: violet;
+        }
+
+        .body {
+            background-color: deepskyblue;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .right {
+            float:right;
+        }
+        .logo {
+            color: darkslateblue;
+            padding-bottom: -10px;
+        }
+        .slogan {
+            background-color: #F5F5F5;
+        }
+
+        /*<= 768px*/
+        @media only print and (max-width: 768px) {
+            [class*='col-'] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="header col-12">
+        <div class="col-1">Nhãn hiệu</div>
+        <div class="col-1">Thông tin</div>
+        <div class="col-1">Kết nối</div>
+        <div class="col-1">Tìm bạn bè</div>
+        <div class="right col-1">Đăng nhập</div>
+    </div>
+</div>
+<div class="row slogan col-12">
+   <div class="col-6">
+    <div class="logo col-12" style="margin-bottom: -15px;"><h1>Facebook</h1></div>
+    <div class="col-12" style="margin-top: -15px;"><h3>Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc
+        sống của bạn.</h3></div>
+   </div>
+   <div class="col-3" style="background-color: white">
+       <div class = "col-12"><form><input type="text" value="Số điện thoại hoặc email...."></form></div>
+       <div class = "col-12"><form><input type="text" value="Mật khẩu...."></form></div>
+       <div class = "col-12"><form><button type="button">Đăng nhập</button></form></div>
+       <div class = "col-12" style="margin-top: -15px;margin-bottom: -15px;"><h4>Quên mật khẩu?</h4></div>
+       <div class = "col-12"><form><button type="button">Tạo mật khẩu mới!!</button></form></div>
+   </div>
+</div>
+<div class="header col-12">
+       <div class="col-2"></div>
+       <div class="col-8">Đăng ký Đăng nhập  Messenger  Facebook  LiteWatch Danh bạ  Trang  Hạng mục  TrangĐịa  điểm
+           Trò chơi  Vị trí  Market  place  Facebook  Pay  Nhóm  Oculus  Portal  Instagram  Địa phương </br>
+           Facebook © 2020</div>
+       <div class="col-2"></div>
+</div>
+
+</body>
+</html>

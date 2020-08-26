@@ -50,6 +50,8 @@ insert into nhan_vien values
   (1,'Teo','1994-06-19','242341312','10000000','0452342432','teo@gmail.com','Quang tri',4,3,2),   
   (2,'Tea','1995-03-14','234324723','100000000','0352145886','teatea@gmail.com','Quang tri',6,4,1),
   (3,'Koi','1990-06-29','242334543','60000000','0989342343','koi@gmail.com','Nghe an',5,4,1);
+  insert into nhan_vien values 
+  (4,'Mai','1998-06-12','309841312','100000000','0502342321','mai@gmail.com','Quang ngai',5,3,4);
 select *
    from nhan_vien;
    
@@ -176,11 +178,11 @@ select dich_vu.id_dv,ten_dv,dien_tich,so_nguoi_toi_da,chi_phi_thue,loai_dich_vu.
 	from dich_vu
     inner join loai_dich_vu on dich_vu.id_loai_dv = loai_dich_vu.id_loai_dv
     inner join hop_dong on hop_dong.id_dv = dich_vu.id_dv
-where year(ngay_lam_hd) not in(2019) and year(ngay_lam_hd) = 2018;
-     /* year(ngay_lam_hd) = 2018 and dich_vu.id_dv not in (
-      select dich_vu.id_dv 
+where year(ngay_lam_hd) = 2018 and dich_vu.id_dv not in (
+      select id_dv
           from hop_dong 
-	  where year(ngay_lam_hd) = 2019);*/
+	  where year(ngay_lam_hd) = 2019);
+
       
   /*8. Hiển thị thông tin HoTenKhachHang có trong hệ thống, với yêu cầu HoThenKhachHang không trùng nhau*/
        /* cach 1 */
@@ -298,6 +300,41 @@ create view so_luong_hd_2017_2019 as
 delete from nhan_vien
 where nhan_vien.id_nv not in (select so_luong_hd_2017_2019.id_nv
                                   from so_luong_hd_2017_2019);
+                                  
+  /*17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond, chỉ cập
+nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.*/                                
+
+update khach_hang
+  set khach_hang.id_loai_khach = 1
+where khach_hang.id_loai_khach = 2 and khach_hang.id_kh in(
+ select id_kh 
+  from(
+   select khach_hang.id_kh
+	 from khach_hang
+	 inner join hop_dong on hop_dong.id_kh = khach_hang.id_kh
+   where year(ngay_lam_hd) = 2020
+   group by khach_hang.id_kh
+   having sum(tong_tien) >= 2000000) as tempble);
  
+ /*19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 
+ lên gấp đôi.*/
+ update dich_vu_di_kem
+  set gia_dv_di_kem = gia_dv_di_kem * 2
+ where dich_vu_di_kem.id_dv_di_kem in (
+  select id_dv_di_kem 
+   from(
+    select dich_vu_di_kem.id_dv_di_kem
+      from hop_dong_chi_tiet
+      inner join dich_vu_di_kem on hop_dong_chi_tiet.id_dv_di_kem = dich_vu_di_kem.id_dv_di_kem
+      inner join hop_dong on hop_dong_chi_tiet.id_hop_dong = hop_dong.id_hop_dong
+    where year(ngay_lam_hd) = 2019  
+    group by hop_dong_chi_tiet.id_dv_di_kem
+    having count(hop_dong_chi_tiet.id_dv_di_kem) >= 2) as teamp);
  
+ /* 20.	Hiển thị thông tin của tất cả các Nhân viên và Khách hàng có trong hệ thống, thông 
+ tin hiển thị bao gồm ID (IDNhanVien, IDKhachHang), HoTen, Email, SoDienThoai, NgaySinh, DiaChi */
  
+ select * 
+   from nhan_vien;
+ select *
+   from khach_hang;

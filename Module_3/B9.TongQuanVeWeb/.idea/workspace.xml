@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fcab01bc-8b35-4786-9acf-761815326a56" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ThietKeBoCucTrangWeb/BaiTap/TaoTrangFaceBookGianLuoc.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThietKeBoCucTrangWeb/BaiTap/Trang XemVideoTrucTuyen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ThietKeBoCucTrangWeb/BaiTap/Tao_layout_voi_RWD.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ThietKeBoCucTrangWeb/BaiTap/Tao_layout_voi_RWD.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Study\C0520G1_VST\dtbui\Module_3\B9.TongQuanVeWeb\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gdFg3QeqTaBFQefSwXnPsppui6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.37" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.37" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="server_time:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/server_time_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="server_time:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fcab01bc-8b35-4786-9acf-761815326a56" name="Default Changelist" comment="" />
+      <created>1598436669696</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598436669696</updated>
+      <workItem from="1598436679525" duration="121000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="462" y="111" key="FileChooserDialogImpl" timestamp="1598436760870">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="462" y="111" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1598436760870" />
+    <state x="65" y="0" key="new project wizard" timestamp="1598436798953">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="65" y="0" key="new project wizard/0.0.1366.738@0.0.1366.738" timestamp="1598436798953" />
+  </component>
+</project>
