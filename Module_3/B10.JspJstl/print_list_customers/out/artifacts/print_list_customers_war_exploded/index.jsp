@@ -13,25 +13,6 @@
     <title>List of Customer</title>
   </head>
   <body>
-
-  <h2>Danh sách khách hàng với JSTL</h2>
-  <form action="${pageContext.request.contextPath}/customer" method="post">
-  <table>
-    <tr>
-      <th>Tên</th>
-      <th>Ngày sinh</th>
-      <th>Địa chỉ</th>
-    </tr>
-    <c:forEach var="customer" items="${customerListServlet}">
-     <tr>
-       <td><c:out value="${customer.name}"></c:out></td>
-       <td><c:out value="${customer.birthday}"></c:out></td>
-       <td><c:out value="${customer.address}"></c:out></td>
-     </tr>
-
-    </c:forEach>
-
-  </table>
-  </form>
+  <c:redirect url="/customer"></c:redirect>
   </body>
 </html>
