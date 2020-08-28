@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Result: <%=request.getParameter("username")%></h1>
-    <h1>Total: <%=request.getAttribute("total")%></h1>
+    <h1>Total: <%=request.getAttribute("totalAbc")%></h1>
 
     <a href="index.jsp">Click to index</a>
 </body>
