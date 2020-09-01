@@ -27,7 +27,7 @@ public class UsersServlet extends HttpServlet {
                 createUser(request, response);
                 break;
             case "search":
-
+                searchUser(request,response);
                 break;
             default:
                 showUsersList(request, response);

@@ -21,7 +21,7 @@ public class UserBOImpl implements UserBO{
 
     @Override
     public List<User> findByCountry(String country) {
-        return null;
+        return userDao.findByCountry(country);
     }
 
     @Override

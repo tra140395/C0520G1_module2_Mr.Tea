@@ -76,6 +76,7 @@ public class UserDAOImpl implements UserDao{
 
     @Override
     public List<User> findByCountry(String country) {
-        return null;
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
     }
 }
