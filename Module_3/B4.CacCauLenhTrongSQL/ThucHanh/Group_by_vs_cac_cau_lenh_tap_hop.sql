@@ -29,10 +29,7 @@ where status = 'shipped'
 group by year
 having year > 2003;
 
-/* Thu tu thuc hien cac cau lenh:
-select columnname(s) from tablename 
-where conditional
-group by ... having ... */
+
 
 
 

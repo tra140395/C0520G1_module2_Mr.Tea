@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c2e7921-8667-431e-8cf3-6358a11ab6f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/BaiTap/TaoTrangFaceBookGianLuoc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/BaiTap/Trang XemVideoTrucTuyen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B8.Bootstrap/gallery_don_gian.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/B8.Bootstrap/landing_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudyFurama/nhap_du_lieu_va_truy_van.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/BaiTap/Tao_layout_voi_RWD.html" beforeDir="false" afterPath="$PROJECT_DIR$/ThietKeBoCucTrangWeb/BaiTap/Tao_layout_voi_RWD.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/ProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/product/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/product/view.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/production/java-web-mvc/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/production/java-web-mvc/controller/ProductServlet.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +66,8 @@
       <workItem from="1598276611414" duration="2408000" />
       <workItem from="1598319061614" duration="16299000" />
       <workItem from="1598404900307" duration="1588000" />
+      <workItem from="1598798734959" duration="4200000" />
+      <workItem from="1598837934647" duration="8888000" />
     </task>
     <servers />
   </component>
@@ -80,6 +83,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="439" y="164" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1597921986830" />
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598802904469">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.738@0.0.1366.738" timestamp="1598802904469" />
     <state x="314" y="178" key="run.anything.popup" timestamp="1598240091227">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
