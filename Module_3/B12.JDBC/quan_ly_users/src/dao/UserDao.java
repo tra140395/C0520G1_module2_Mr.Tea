@@ -11,5 +11,8 @@ public interface UserDao {
 
     List<User> findByCountry(String country);
     List<User> sortByName();
-
+    List<User> findAllWithProcedure();
+    User findById(int id);
+    int editUser(User user);
+    void deleteUser(int id);
 }

@@ -33,6 +33,8 @@
         <td>Name</td>
         <td>Email</td>
         <td>Country</td>
+        <td>Edit</td>
+        <td>Delete</td>
     </tr>
     <c:forEach items="${userListServlet}" var="user">
         <tr>
@@ -40,10 +42,14 @@
             <td>${user.name}</td>
             <td>${user.email}</td>
             <td>${user.country}</td>
+            <td><a href="/user?action=editById&id=${user.id}">Edit</a></td>
+            <td><a href="/user?action=deleteById&id=${user.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
-
+<p>
+    <a href="/user?action=showListProcedure">Show User List by Procedure</a>
+</p>
 
 </body>
 </html>

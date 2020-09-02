@@ -4,6 +4,7 @@ import bo.UserBO;
 import bo.UserBOImpl;
 import model.User;
 
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,9 +31,20 @@ public class UsersServlet extends HttpServlet {
             case "search":
                 searchUser(request,response);
                 break;
+            case "edit":
+                editUser(request,response);
             default:
                 showUsersList(request, response);
         }
+    }
+    private void editUser(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String country = request.getParameter("country");
+        User user = new User(id,name,email,country);
+        userBO.editUser(user);
+        showUsersList(request,response);
     }
 
     private void createUser(HttpServletRequest request, HttpServletResponse response) {
@@ -81,12 +93,17 @@ public class UsersServlet extends HttpServlet {
             case "search":
                 showSearchForm(request,response);
                 break;
-            case "update":
+            case "editById":
+                showEditForm(request,response);
                 break;
-            case "delete":
+            case "deleteById":
+                deleteById(request,response);
                 break;
             case "sort":
                 sortByName(request,response);
+                break;
+            case "showListProcedure":
+                showUsersListByProcedure(request,response);
                 break;
             default:
                 showUsersList(request, response);
@@ -104,6 +121,18 @@ public class UsersServlet extends HttpServlet {
     private void showUsersList(HttpServletRequest request, HttpServletResponse response) {
         List<User> userList =  userBO.findAll();
         request.setAttribute("userListServlet", userList);
+        try {
+            request.getRequestDispatcher("/view/list.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showUsersListByProcedure(HttpServletRequest request, HttpServletResponse response){
+        List<User> userList = userBO.findAllWithProcedure();
+        request.setAttribute("userListServlet",userList);
         try {
             request.getRequestDispatcher("/view/list.jsp").forward(request,response);
         } catch (ServletException e) {
@@ -132,6 +161,30 @@ public class UsersServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showEditForm(HttpServletRequest request,HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        User user = userBO.findById(id);
+        RequestDispatcher dispatcher;
+        if (user == null) {
+            dispatcher = request.getRequestDispatcher("error-404.jsp");
+        } else
+            request.setAttribute("user", user);
+            dispatcher = request.getRequestDispatcher("/view/edit.jsp");
+            try {
+                dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteById(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        userBO.deleteUser(id);
+        showUsersList(request,response);
     }
 }
 

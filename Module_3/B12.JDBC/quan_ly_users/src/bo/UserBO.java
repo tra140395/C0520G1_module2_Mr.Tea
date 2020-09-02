@@ -13,4 +13,8 @@ public interface UserBO {
 
     boolean validateId();
     List<User> sortByName();
+    List<User> findAllWithProcedure();
+    User findById(int id);
+    int editUser(User user);
+    void deleteUser(int id);
 }

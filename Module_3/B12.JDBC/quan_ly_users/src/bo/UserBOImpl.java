@@ -33,4 +33,24 @@ public class UserBOImpl implements UserBO{
     public List<User> sortByName() {
         return userDao.sortByName();
     }
+
+    @Override
+    public List<User> findAllWithProcedure() {
+        return userDao.findAllWithProcedure();
+    }
+
+    @Override
+    public User findById(int id) {
+        return userDao.findById(id);
+    }
+
+    @Override
+    public int editUser(User user) {
+        return userDao.editUser(user);
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
+    }
 }

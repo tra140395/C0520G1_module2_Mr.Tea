@@ -1,11 +1,10 @@
 package dao;
 
 import model.User;
+import sun.security.pkcs11.Secmod;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.jws.soap.SOAPBinding;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +36,40 @@ public class UserDAOImpl implements UserDao{
                     statement.close();
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+        return userList;
+    }
+
+    @Override
+    public List<User> findAllWithProcedure() {
+        Connection connection = DBConnection.getConnection();
+        CallableStatement callableStatement =null;
+        ResultSet resultSet = null;
+        List<User> userList = new ArrayList<>();
+        if(connection != null){
+            try {
+                callableStatement = connection.prepareCall("call show_all_user()");
+                resultSet = callableStatement.executeQuery();
+                User user = null;
+                while (resultSet.next()){
+                    user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setCountry(resultSet.getString("country"));
+                    userList.add(user);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    resultSet.close();
+                    callableStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
                 DBConnection.close();
             }
@@ -143,4 +176,88 @@ public class UserDAOImpl implements UserDao{
        }
        return userList;
     }
+
+    @Override
+    public User findById(int id) {
+        Connection connection = DBConnection.getConnection();
+        CallableStatement callableStatement = null;
+        ResultSet resultSet = null;
+        User user = null;
+
+        if (connection != null) {
+            try {
+                callableStatement = connection.prepareCall("call find_user_by_id(?)");
+                callableStatement.setInt(1, id);
+                resultSet = callableStatement.executeQuery();
+                if (resultSet.next()) {
+                    user = new User();
+                    user.setId(resultSet.getInt("id"));
+                    user.setName(resultSet.getString("name"));
+                    user.setEmail(resultSet.getString("email"));
+                    user.setCountry(resultSet.getString("country"));
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    callableStatement.close();
+                    resultSet.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+        return user;
+    }
+
+    @Override
+    public int editUser(User user) {
+        Connection connection = DBConnection.getConnection();
+        CallableStatement callableStatement = null;
+        int count = 0;
+        if(connection != null){
+            try {
+                callableStatement = connection.prepareCall("call edit_user(?,?,?,?)");
+                callableStatement.setInt(1, user.getId());
+                callableStatement.setString(2, user.getName());
+                callableStatement.setString(3, user.getEmail());
+                callableStatement.setString(4, user.getCountry());
+                count = callableStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    callableStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        Connection connection = DBConnection.getConnection();
+        CallableStatement callableStatement = null;
+        if(connection != null){
+            try {
+                callableStatement = connection.prepareCall("call delete_users(?)");
+                callableStatement.setInt(1,id);
+                callableStatement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    callableStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+    }
+
 }
