@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "UsersServlet", urlPatterns = {"","/user"})
@@ -57,7 +58,7 @@ public class UsersServlet extends HttpServlet {
         String country = request.getParameter("country");
         List<User> userList = userBO.findByCountry(country);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
-        request.setAttribute("userList",userList);
+        request.setAttribute("userListServlet",userList);
         try {
             dispatcher.forward(request,response);
         } catch (ServletException e) {
@@ -83,6 +84,9 @@ public class UsersServlet extends HttpServlet {
             case "update":
                 break;
             case "delete":
+                break;
+            case "sort":
+                sortByName(request,response);
                 break;
             default:
                 showUsersList(request, response);
@@ -112,6 +116,19 @@ public class UsersServlet extends HttpServlet {
     private void showSearchForm(HttpServletRequest request,HttpServletResponse response){
         try {
             response.sendRedirect("view/search.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void sortByName(HttpServletRequest request,HttpServletResponse response){
+        List<User> userList = userBO.sortByName();
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/list.jsp");
+        request.setAttribute("userListServlet",userList);
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

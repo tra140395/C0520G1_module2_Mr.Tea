@@ -10,5 +10,6 @@ public interface UserDao {
     boolean save(User user);
 
     List<User> findByCountry(String country);
+    List<User> sortByName();
 
 }

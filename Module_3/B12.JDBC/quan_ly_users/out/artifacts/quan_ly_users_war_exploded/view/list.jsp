@@ -21,6 +21,12 @@
 <p>
     <a href="/user?action=create">Create new User</a>
 </p>
+<p>
+    <a href="/user?action=search">Search User by country</a>
+</p>
+<p>
+    <a href="/user?action=sort">Sort List users by name</a>
+</p>
 <table border="1">
     <tr class="hear">
         <td>Id</td>
@@ -37,5 +43,7 @@
         </tr>
     </c:forEach>
 </table>
+
+
 </body>
 </html>

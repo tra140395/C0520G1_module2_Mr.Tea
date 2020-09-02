@@ -35,8 +35,8 @@ public class UserDAOImpl implements UserDao{
                 try {
                     resultSet.close();
                     statement.close();
-                } catch (SQLException throwable) {
-                    throwable.printStackTrace();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
                 }
                 DBConnection.close();
             }
@@ -61,8 +61,8 @@ public class UserDAOImpl implements UserDao{
           }finally {
               try {
                   statement.close();
-              } catch (SQLException throwable) {
-                  throwable.printStackTrace();
+              } catch (SQLException throwables) {
+                  throwables.printStackTrace();
               }
               DBConnection.close();
           }
@@ -78,5 +78,69 @@ public class UserDAOImpl implements UserDao{
     public List<User> findByCountry(String country) {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<User> userList = new ArrayList<>();
+        if (connection != null) {
+            try {
+               statement = connection.prepareStatement("select * from users where country like (?)");
+               statement.setString(1,'%' +country+'%');
+               resultSet = statement.executeQuery();
+               User user = null;
+               while (resultSet.next()){
+                   user = new User();
+                   user.setId(resultSet.getInt("id"));
+                   user.setName(resultSet.getString("name"));
+                   user.setEmail(resultSet.getString("email"));
+                   user.setCountry(resultSet.getString("country"));
+                   userList.add(user);
+
+               }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    resultSet.close();
+                    statement.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+        return userList;
+    }
+
+    @Override
+    public List<User> sortByName(){
+       Connection connection = DBConnection.getConnection();
+       PreparedStatement statement = null;
+       ResultSet resultSet = null;
+       List<User> userList = new ArrayList<>();
+       if (connection != null){
+           try {
+               statement = connection.prepareStatement("select * from users order by `name`");
+               resultSet = statement.executeQuery();
+               User user = null;
+               while (resultSet.next()){
+                   user = new User();
+                   user.setId(resultSet.getInt("id"));
+                   user.setName(resultSet.getString("name"));
+                   user.setEmail(resultSet.getString("email"));
+                   user.setCountry(resultSet.getString("country"));
+                   userList.add(user);
+               }
+           } catch (SQLException e) {
+               e.printStackTrace();
+           }finally {
+               try {
+                   resultSet.close();
+                   statement.close();
+               } catch (SQLException e) {
+                   e.printStackTrace();
+               }
+               DBConnection.close();
+           }
+       }
+       return userList;
     }
 }

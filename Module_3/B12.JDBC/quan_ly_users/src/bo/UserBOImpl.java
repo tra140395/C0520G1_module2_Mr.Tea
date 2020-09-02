@@ -28,4 +28,9 @@ public class UserBOImpl implements UserBO{
     public boolean validateId() {
         return false;
     }
+
+    @Override
+    public List<User> sortByName() {
+        return userDao.sortByName();
+    }
 }

@@ -12,4 +12,5 @@ public interface UserBO {
     List<User> findByCountry(String country);
 
     boolean validateId();
+    List<User> sortByName();
 }
