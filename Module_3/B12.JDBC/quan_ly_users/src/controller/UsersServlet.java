@@ -33,9 +33,18 @@ public class UsersServlet extends HttpServlet {
                 break;
             case "edit":
                 editUser(request,response);
+            case "swap":
+                swapId(request,response);
+                break;
             default:
                 showUsersList(request, response);
         }
+    }
+    private void swapId(HttpServletRequest request,HttpServletResponse response){
+        int id_1 = Integer.parseInt(request.getParameter("id_1"));
+        int id_2 = Integer.parseInt(request.getParameter("id_2"));
+        userBO.swapIdTransaction(id_1,id_2);
+        showUsersList(request, response);
     }
     private void editUser(HttpServletRequest request,HttpServletResponse response){
         int id = Integer.parseInt(request.getParameter("id"));
@@ -105,8 +114,24 @@ public class UsersServlet extends HttpServlet {
             case "showListProcedure":
                 showUsersListByProcedure(request,response);
                 break;
+            case "swap":
+                showSwapForm(request,response);
+                break;
             default:
                 showUsersList(request, response);
+        }
+    }
+
+    private void showSwapForm(HttpServletRequest request,HttpServletResponse response){
+        List<User> userList = userBO.findAll();
+        request.setAttribute("userList",userList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/swap.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

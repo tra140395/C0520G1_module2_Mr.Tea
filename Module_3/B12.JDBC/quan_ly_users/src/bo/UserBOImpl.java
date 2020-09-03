@@ -53,4 +53,9 @@ public class UserBOImpl implements UserBO{
     public void deleteUser(int id) {
         userDao.deleteUser(id);
     }
+
+    @Override
+    public boolean swapIdTransaction(int id_1, int id_2) {
+        return userDao.swapIdTransaction(id_1,id_2);
+    }
 }

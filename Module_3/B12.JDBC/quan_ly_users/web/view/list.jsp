@@ -50,6 +50,9 @@
 <p>
     <a href="/user?action=showListProcedure">Show User List by Procedure</a>
 </p>
+<p>
+    <a href="/user?action=swap">Swap id Transaction</a>
+</p>
 
 </body>
 </html>

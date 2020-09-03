@@ -12,9 +12,16 @@ public interface UserBO {
     List<User> findByCountry(String country);
 
     boolean validateId();
+
     List<User> sortByName();
+
     List<User> findAllWithProcedure();
+
     User findById(int id);
+
     int editUser(User user);
+
     void deleteUser(int id);
+
+    boolean swapIdTransaction(int id_1, int id_2);
 }
