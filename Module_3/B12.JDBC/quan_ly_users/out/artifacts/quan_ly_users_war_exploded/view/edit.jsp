@@ -23,19 +23,19 @@
         <table>
             <tr>
                 <td>Id:</td>
-                <td><input type="text" name="id" id="id" value="${requestScope["user"].getId()}"></td>
+                <td><input type="text" name="id" id="id" value="${user.id}"></td>
             </tr>
             <tr>
                 <td>Name:</td>
-                <td><input type="text" name="name" id="name" value="${requestScope["user"].getName()}"></td>
+                <td><input type="text" name="name" id="name" value="${user.name}"></td>
             </tr>
             <tr>
                 <td>Mail:</td>
-                <td><input type="text" name="email" id="email" value="${requestScope["user"].getEmail()}"></td>
+                <td><input type="text" name="email" id="email" value="${user.email}"></td>
             </tr>
             <tr>
                 <td>Country:</td>
-                <td><input type="text" name="country" id="country" value="${requestScope["user"].getCountry()}"></td>
+                <td><input type="text" name="country" id="country" value="${user.country}"></td>
             </tr>
             <tr>
                 <td></td>
