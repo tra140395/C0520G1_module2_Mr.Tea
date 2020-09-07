@@ -107,4 +107,5 @@ create table hop_dong_chi_tiet(
   foreign key(id_hop_dong) references hop_dong(id_hop_dong),
   foreign key(id_dv_di_kem) references dich_vu_di_kem(id_dv_di_kem)
   );
+
  
