@@ -2,9 +2,7 @@ package controller;
 
 import bo.AccountBO;
 import bo.AccountBOImpl;
-import main.Customer;
-import main.Employee;
-import main.Service;
+import main.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,9 +41,56 @@ public class Account_Servlet extends HttpServlet {
             case "editCustomer":
                 editCustomer(request,response);
                 break;
+            case "create_contract":
+                createContract(request,response);
+                break;
+            case "create_contract_detail":
+                createContractDetail(request,response);
+                break;
             default:
                 showHome(request,response);
         }
+    }
+
+    public void createContractDetail(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("contract_detail_id"));
+        int contract_id = Integer.parseInt(request.getParameter("contract_id"));
+        int attach_service_id = Integer.parseInt(request.getParameter("attach_service_id"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+        ContractDetail contractDetail = new ContractDetail(id,contract_id,attach_service_id,quantity);
+        accountBO.saveContractDetail(contractDetail);
+        request.setAttribute("message","done!");
+        try {
+            request.getRequestDispatcher("/view/createContractDetail.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createContract(HttpServletRequest request,HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        String start = request.getParameter("start_date");
+        String end = request.getParameter("end_date");
+        double deposit = Double.parseDouble(request.getParameter("deposit"));
+        double total_money = Double.parseDouble(request.getParameter("total_money"));
+        int employee_id = Integer.parseInt(request.getParameter("employee_id"));
+        int customer_id = Integer.parseInt(request.getParameter("customer_id"));
+        int service_id = Integer.parseInt(request.getParameter("service_id"));
+        Contract contract = new Contract(id,start,end,deposit,total_money,employee_id,customer_id,service_id);
+
+        accountBO.saveContract(contract);
+        request.setAttribute("message","done!");
+        try {
+            request.getRequestDispatcher("/view/createContract.jsp").forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void editCustomer(HttpServletRequest request,HttpServletResponse response){
@@ -62,6 +107,7 @@ public class Account_Servlet extends HttpServlet {
         Customer customer = new Customer(id,type_id,name,birthday,gender,id_card,phone,email,address);
         accountBO.editCustomer(customer);
         showCustomerList(request,response);
+
     }
 
     public void createCustomer(HttpServletRequest request,HttpServletResponse response){
@@ -189,8 +235,77 @@ public class Account_Servlet extends HttpServlet {
             case "editCustomer":
                 showEditCustomerForm(request,response);
                 break;
+            case "addNewContract":
+                showContractForm(request,response);
+                break;
+            case "addNewContractDetail":
+                showCreateContractDetailForm(request,response);
+                break;
+            case "showCustomerUsingService":
+                showCustomerUsingService(request,response);
+                break;
+            case "showService":
+                showService(request,response);
+                break;
+            case "deleteService" :
+                deleteService(request,response);
+                break;
             default:
                 showHome(request,response);
+        }
+    }
+
+    private void deleteService(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        accountBO.deleteService(id);
+        showService(request,response);
+    }
+
+    private void showService(HttpServletRequest request, HttpServletResponse response){
+        List<Service> serviceList = accountBO.showAllService();
+        if(serviceList == null){
+            request.getRequestDispatcher("error-404.jsp");
+        } else {
+            request.setAttribute("serviceList",serviceList);
+            try {
+                request.getRequestDispatcher("/view/listService.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showCustomerUsingService(HttpServletRequest request,HttpServletResponse response){
+        List<CustomerContract> customerContractList = accountBO.findCustomerUsingService();
+        if(customerContractList == null){
+            request.getRequestDispatcher("error-404.jsp");
+        }else {
+            request.setAttribute("customerContractList",customerContractList);
+            try {
+                request.getRequestDispatcher("/view/listCustomerContract.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showCreateContractDetailForm(HttpServletRequest request,HttpServletResponse response){
+        try {
+            response.sendRedirect("/view/createContractDetail.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showContractForm(HttpServletRequest request,HttpServletResponse response){
+        try {
+            response.sendRedirect("/view/createContract.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

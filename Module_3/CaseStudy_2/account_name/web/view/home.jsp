@@ -24,7 +24,7 @@
       <div id="menu">
           <ul>
               <li>
-                  <a href="#">Home</a>
+                  <a href="/account">Home</a>
               </li>
 
               <li>
@@ -40,7 +40,7 @@
                   <ul>
                       <li><a href="/account?action=addNewCustomer">Add new customer</a></li>
                       <li><a href="/account?action=showAllCustomer">Show all customer</a></li>
-                      <li><a href="#">Show only customer using service</a></li>
+                      <li><a href="/account?action=showCustomerUsingService">Show only customer using service</a></li>
                   </ul>
               </li>
 
@@ -53,8 +53,8 @@
               <li>
                   <a href="#">Contract</a>
                   <ul>
-                      <li><a href="#">Add new contract</a></li>
-                      <li><a href="#">Add new contract detail</a></li>
+                      <li><a href="/account?action=addNewContract">Add new contract</a></li>
+                      <li><a href="/account?action=addNewContractDetail">Add new contract detail</a></li>
                   </ul>
               </li>
           </ul>

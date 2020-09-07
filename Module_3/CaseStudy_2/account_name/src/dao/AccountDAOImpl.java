@@ -1,8 +1,6 @@
 package dao;
 
-import main.Customer;
-import main.Employee;
-import main.Service;
+import main.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAOImpl implements AccountDAO {
+    private final String findCustomerContract = "select customer.customer_name, attach_service.attach_service_name" +
+            "  from customer" +
+            "  inner join contract on contract.customer_id = customer.customer_id" +
+            "  inner join contract_detail on contract_detail.contract_id = contract.contract_id" +
+            "  inner join attach_service on attach_service.attach_service_id = contract_detail.attach_service_id;";
     @Override
     public List<Customer> findAllCustomer() {
         Connection connection = DBConnection.getConnection();
@@ -271,6 +274,155 @@ public class AccountDAOImpl implements AccountDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+    }
+
+    @Override
+    public void saveContract(Contract contract) {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        if(connection != null){
+            try {
+                statement = connection.prepareStatement("insert into Contract values(?,?,?,?,?,?,?,?);");
+                statement.setInt(1,contract.getContract_id());
+                statement.setString(2,contract.getContract_start_date());
+                statement.setString(3,contract.getContract_end_date());
+                statement.setDouble(4,contract.getContract_deposit());
+                statement.setDouble(5,contract.getContract_total_money());
+                statement.setInt(6,contract.getEmployee_id());
+                statement.setInt(7,contract.getCustomer_id());
+                statement.setInt(8,contract.getService_id());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+    }
+
+    public void saveContractDetail(ContractDetail contractDetail){
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        if(connection != null){
+            try {
+                statement = connection.prepareStatement("insert into contract_detail values(?,?,?,?);");
+                statement.setInt(1,contractDetail.getContract_detail_id());
+                statement.setInt(2,contractDetail.getContract_id());
+                statement.setInt(3,contractDetail.getAttach_service_id());
+                statement.setInt(4,contractDetail.getQuantity());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+    }
+
+    @Override
+    public List<CustomerContract> findCustomerUsingService() {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<CustomerContract> customerContractList = new ArrayList<>();
+        if(connection != null){
+            try {
+                statement = connection.prepareStatement(findCustomerContract);
+                resultSet = statement.executeQuery();
+                CustomerContract customerContract;
+                while (resultSet.next()){
+                    customerContract = new CustomerContract();
+                    customerContract.setCustomer_name(resultSet.getString("customer_name"));
+                    customerContract.setAttach_service_name(resultSet.getString("attach_service_name"));
+                    customerContractList.add(customerContract);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    resultSet.close();
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+        return customerContractList;
+    }
+
+    @Override
+    public List<Service> showAllService() {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Service> serviceList = new ArrayList<>();
+        if (connection != null){
+            try {
+                statement = connection.prepareStatement("select * from service;");
+                resultSet = statement.executeQuery();
+                Service service;
+                while (resultSet.next()){
+                    service = new Service();
+                    service.setService_id(resultSet.getInt("service_id"));
+                    service.setService_name(resultSet.getString("service_name"));
+                    service.setService_area(resultSet.getInt("service_area"));
+                    service.setService_cost(resultSet.getDouble("service_cost"));
+                    service.setService_max_people(resultSet.getInt("service_max_people"));
+                    service.setRent_type_id(resultSet.getInt("rent_type_id"));
+                    service.setService_type_id(resultSet.getInt("service_type_id"));
+                    service.setStandard_room(resultSet.getString("standard_room"));
+                    service.setDescription_other_convenience(resultSet.getString("description_other_convenience"));
+                    service.setPool_area(resultSet.getDouble("pool_area"));
+                    service.setNumber_of_floors(resultSet.getInt("number_of_floors"));
+
+                    serviceList.add(service);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    statement.close();
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DBConnection.close();
+            }
+        }
+       return serviceList;
+    }
+
+    @Override
+    public void deleteService(int id) {
+        Connection connection = DBConnection.getConnection();
+        PreparedStatement statement = null;
+        if (connection != null){
+            try {
+                statement = connection.prepareStatement("delete from service where service_id = ?;");
+                statement.setInt(1,id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }finally {
                 try {
                     statement.close();
                 } catch (SQLException e) {

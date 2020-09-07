@@ -2,9 +2,7 @@ package bo;
 
 import dao.AccountDAO;
 import dao.AccountDAOImpl;
-import main.Customer;
-import main.Employee;
-import main.Service;
+import main.*;
 
 import java.util.List;
 
@@ -48,5 +46,30 @@ public class AccountBOImpl implements AccountBO {
     @Override
     public void editCustomer(Customer customer) {
         accountDAO.editCustomer(customer);
+    }
+
+    @Override
+    public void saveContract(Contract contract) {
+        accountDAO.saveContract(contract);
+    }
+
+    @Override
+    public void saveContractDetail(ContractDetail contractDetail) {
+        accountDAO.saveContractDetail(contractDetail);
+    }
+
+    @Override
+    public List<CustomerContract> findCustomerUsingService() {
+        return accountDAO.findCustomerUsingService();
+    }
+
+    @Override
+    public List<Service> showAllService() {
+        return accountDAO.showAllService();
+    }
+
+    @Override
+    public void deleteService(int id) {
+        accountDAO.deleteService(id);
     }
 }

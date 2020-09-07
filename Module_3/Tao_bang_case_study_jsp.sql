@@ -132,7 +132,10 @@ create table contract_detail (
   foreign key(attach_service_id) references attach_service(attach_service_id)
 );  
 
-select * 
-  from customer;
+select customer.customer_name, attach_service.attach_service_name
+  from customer
+  inner join contract on contract.customer_id = customer.customer_id
+  inner join contract_detail on contract_detail.contract_id = contract.contract_id
+  inner join attach_service on attach_service.attach_service_id = contract_detail.attach_service_id;
   
   

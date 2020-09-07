@@ -1,8 +1,6 @@
 package dao;
 
-import main.Customer;
-import main.Employee;
-import main.Service;
+import main.*;
 
 import java.util.List;
 
@@ -22,4 +20,14 @@ public interface AccountDAO {
     void deleteCustomer(int id);
 
     void editCustomer(Customer customer);
+
+    void saveContract(Contract contract);
+
+    void saveContractDetail(ContractDetail contractDetail);
+
+    List<CustomerContract> findCustomerUsingService();
+
+    List<Service> showAllService();
+
+    void deleteService(int id);
 }
