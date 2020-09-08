@@ -15,9 +15,9 @@ public interface AccountDAO {
 
     void saveEmployee(Employee employee);
 
-    Customer findCustomerById(int id);
+    Customer findCustomerById(String id);
 
-    void deleteCustomer(int id);
+    void deleteCustomer(String id);
 
     void editCustomer(Customer customer);
 
@@ -29,5 +29,5 @@ public interface AccountDAO {
 
     List<Service> showAllService();
 
-    void deleteService(int id);
+    void deleteService(String id);
 }

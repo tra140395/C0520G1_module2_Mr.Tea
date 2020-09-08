@@ -2,6 +2,7 @@ package controller;
 
 import bo.AccountBO;
 import bo.AccountBOImpl;
+import common.Regex;
 import main.*;
 
 import javax.servlet.RequestDispatcher;
@@ -94,7 +95,7 @@ public class Account_Servlet extends HttpServlet {
     }
 
     public void editCustomer(HttpServletRequest request,HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         int type_id = Integer.parseInt(request.getParameter("type_id"));
         String name = request.getParameter("name");
         String birthday = request.getParameter("birthday");
@@ -111,7 +112,7 @@ public class Account_Servlet extends HttpServlet {
     }
 
     public void createCustomer(HttpServletRequest request,HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         int type_id = Integer.parseInt(request.getParameter("type_id"));
         String name = request.getParameter("name");
         String birthday = request.getParameter("birthday");
@@ -122,21 +123,35 @@ public class Account_Servlet extends HttpServlet {
         String address = request.getParameter("address");
 
         Customer customer = new Customer(id,type_id,name,birthday,gender,id_card,phone,email,address);
-        accountBO.saveCustomer(customer);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/createCustomer.jsp");
-        request.setAttribute("message","done!");
-        try {
-            dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        boolean check = (Regex.regexMaKH(customer.getCustomer_id())
+                         & Regex.regexInputPhone(customer.getCustomer_phone())
+                         & Regex.regexInputId_card(customer.getCustomer_id_card())
+                         & Regex.regexEmail(customer.getCustomer_email())) ;
+        if (!check){
+            request.setAttribute("message","wrong format input, please enter again!");
+            try {
+                request.getRequestDispatcher("/view/createCustomer.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            accountBO.saveCustomer(customer);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/createCustomer.jsp");
+            request.setAttribute("message", "done!");
+            try {
+                dispatcher.forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     public void createService(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         String name = request.getParameter("name");
         int area = Integer.parseInt(request.getParameter("area"));
         float cost = Float.parseFloat(request.getParameter("cost"));
@@ -150,14 +165,26 @@ public class Account_Servlet extends HttpServlet {
 
         Service service = new Service(id,name,area,cost,max_people,rent_type_id,service_type_id,
                 standard_room, description,pool_area,number_of_floods);
-        accountBO.saveService(service);
-        request.setAttribute("message","done!");
-        try {
-            request.getRequestDispatcher("/view/createService.jsp").forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        boolean check = Regex.regexMaDV(service.getService_id());
+        if(!check){
+            request.setAttribute("message","Wrong input service. Please try again!!");
+            try {
+                request.getRequestDispatcher("/view/createService.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            accountBO.saveService(service);
+            request.setAttribute("message", "done!");
+            try {
+                request.getRequestDispatcher("/view/createService.jsp").forward(request, response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -191,7 +218,7 @@ public class Account_Servlet extends HttpServlet {
 
     private void searchCustomerById(HttpServletRequest request,HttpServletResponse response){
         List<Customer> customerList = new ArrayList<>();
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Customer customer = accountBO.findCustomerById(id);
         customerList.add(customer);
         request.setAttribute("customerList",customerList);
@@ -256,7 +283,7 @@ public class Account_Servlet extends HttpServlet {
     }
 
     private void deleteService(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         accountBO.deleteService(id);
         showService(request,response);
     }
@@ -310,7 +337,7 @@ public class Account_Servlet extends HttpServlet {
     }
 
     private void showEditCustomerForm(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Customer customer = accountBO.findCustomerById(id);
         RequestDispatcher dispatcher;
         if (customer == null) {
@@ -328,7 +355,7 @@ public class Account_Servlet extends HttpServlet {
     }
 
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         accountBO.deleteCustomer(id);
         showCustomerList(request,response);
     }

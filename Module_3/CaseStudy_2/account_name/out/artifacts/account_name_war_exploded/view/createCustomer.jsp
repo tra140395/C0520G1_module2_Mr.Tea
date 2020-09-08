@@ -12,16 +12,17 @@
     <title>create customer</title>
 </head>
 <body>
-  <p><a href="/account">Back to Home</a></p>
+<%@ include file="home.jsp"%>
+  <p></p>
   <p>
       <c:if test='${message != null}'>
-          <span class="message">${message}</span>
+          <span class="message" style="color: #1e7e34"><h3>${message}</h3></span>
       </c:if>
   </p>
  <form action="/account" method="post">
      <input type="hidden" name="action" value="create_customer">
      <fieldset>
-        <legend>Customer information</legend>
+         <legend><h2>Customer information</h2></legend>
          <table>
              <tr>
                  <td>Id:</td>

@@ -12,6 +12,8 @@
     <title>Edit Customer</title>
 </head>
 <body>
+<%@ include file="home.jsp"%>
+<p></p>
    <form method="post" action="/account">
        <input type="hidden" name="action" value="editCustomer">
        <fieldset>

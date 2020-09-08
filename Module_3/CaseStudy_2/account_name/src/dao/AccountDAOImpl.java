@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDAOImpl implements AccountDAO {
-    private final String findCustomerContract = "select customer.customer_name, attach_service.attach_service_name" +
+    private final String findCustomerContract = "select customer.customer_id, customer.customer_name, " +
+            "  service.service_name, attach_service.attach_service_name" +
             "  from customer" +
-            "  inner join contract on contract.customer_id = customer.customer_id" +
+            "  inner join contract on contract.customer_id = customer.customer_id " +
+            "  inner join service on contract.service_id = service.service_id" +
             "  inner join contract_detail on contract_detail.contract_id = contract.contract_id" +
             "  inner join attach_service on attach_service.attach_service_id = contract_detail.attach_service_id;";
     @Override
@@ -28,7 +30,7 @@ public class AccountDAOImpl implements AccountDAO {
                 Customer customer = null;
                 while (resultSet.next()){
                     customer = new Customer();
-                    customer.setCustomer_id(resultSet.getInt("customer_id"));
+                    customer.setCustomer_id(resultSet.getString("customer_id"));
                     customer.setCustomer_type_id(resultSet.getInt("customer_type_id"));
                     customer.setCustomer_name(resultSet.getString("customer_name"));
                     customer.setCustomer_birthday(resultSet.getString("customer_birthday"));
@@ -61,7 +63,7 @@ public class AccountDAOImpl implements AccountDAO {
         if(connection != null){
             try {
                 statement = connection.prepareStatement("insert into customer values (?,?,?,?,?,?,?,?,?);");
-                statement.setInt(1,customer.getCustomer_id());
+                statement.setString(1,customer.getCustomer_id());
                 statement.setInt(2,customer.getCustomer_type_id());
                 statement.setString(3,customer.getCustomer_name());
                 statement.setString(4,customer.getCustomer_birthday());
@@ -91,7 +93,7 @@ public class AccountDAOImpl implements AccountDAO {
         if (connection != null){
             try {
                 statement = connection.prepareStatement("insert into service values(?,?,?,?,?,?,?,?,?,?,?);");
-                statement.setInt(1,service.getService_id());
+                statement.setString(1,service.getService_id());
                 statement.setString(2,service.getService_name());
                 statement.setInt(3,service.getService_area());
                 statement.setDouble(4,service.getService_cost());
@@ -192,7 +194,7 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public Customer findCustomerById(int id) {
+    public Customer findCustomerById(String id) {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -200,11 +202,11 @@ public class AccountDAOImpl implements AccountDAO {
         if (connection != null){
             try {
                 statement = connection.prepareStatement("select * from customer where customer_id = ?;");
-                statement.setInt(1,id);
+                statement.setString(1,id);
                 resultSet = statement.executeQuery();
                 if (resultSet.next()){
                     customer = new Customer();
-                    customer.setCustomer_id(resultSet.getInt("customer_id"));
+                    customer.setCustomer_id(resultSet.getString("customer_id"));
                     customer.setCustomer_type_id(resultSet.getInt("customer_type_id"));
                     customer.setCustomer_name(resultSet.getString("customer_name"));
                     customer.setCustomer_birthday(resultSet.getString("customer_birthday"));
@@ -230,13 +232,13 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(String id) {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if(connection != null){
             try {
                 statement = connection.prepareStatement("delete from customer where customer_id = ?;");
-                statement.setInt(1,id);
+                statement.setString(1,id);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -260,7 +262,7 @@ public class AccountDAOImpl implements AccountDAO {
                 statement = connection.prepareStatement("update customer set customer_id = ?,customer_type_id=?," +
                         "customer_name = ?,customer_birthday=?,customer_gender=?,customer_id_card =?," +
                         "customer_phone=?, customer_email=?,customer_address = ? where customer_id = ?;");
-                statement.setInt(1,customer.getCustomer_id());
+                statement.setString(1,customer.getCustomer_id());
                 statement.setInt(2,customer.getCustomer_type_id());
                 statement.setString(3,customer.getCustomer_name());
                 statement.setString(4,customer.getCustomer_birthday());
@@ -269,7 +271,7 @@ public class AccountDAOImpl implements AccountDAO {
                 statement.setString(7,customer.getCustomer_phone());
                 statement.setString(8,customer.getCustomer_email());
                 statement.setString(9,customer.getCustomer_address());
-                statement.setInt(10,customer.getCustomer_id());
+                statement.setString(10,customer.getCustomer_id());
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -350,7 +352,9 @@ public class AccountDAOImpl implements AccountDAO {
                 CustomerContract customerContract;
                 while (resultSet.next()){
                     customerContract = new CustomerContract();
+                    customerContract.setCustomer_id(resultSet.getString("customer_id"));
                     customerContract.setCustomer_name(resultSet.getString("customer_name"));
+                    customerContract.setService_name(resultSet.getString("service_name"));
                     customerContract.setAttach_service_name(resultSet.getString("attach_service_name"));
                     customerContractList.add(customerContract);
                 }
@@ -382,7 +386,7 @@ public class AccountDAOImpl implements AccountDAO {
                 Service service;
                 while (resultSet.next()){
                     service = new Service();
-                    service.setService_id(resultSet.getInt("service_id"));
+                    service.setService_id(resultSet.getString("service_id"));
                     service.setService_name(resultSet.getString("service_name"));
                     service.setService_area(resultSet.getInt("service_area"));
                     service.setService_cost(resultSet.getDouble("service_cost"));
@@ -412,13 +416,13 @@ public class AccountDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void deleteService(int id) {
+    public void deleteService(String id) {
         Connection connection = DBConnection.getConnection();
         PreparedStatement statement = null;
         if (connection != null){
             try {
                 statement = connection.prepareStatement("delete from service where service_id = ?;");
-                statement.setInt(1,id);
+                statement.setString(1,id);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();

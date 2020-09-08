@@ -10,7 +10,8 @@
 <html>
 <head>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="nhung_vao_home.css">
+    <c:set var="context" value="${pageContext.request.contextPath}" />
+    <link rel="stylesheet" type="text/css" href="${context}/view/nhung_vao_home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -18,7 +19,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-9"><img src="images1.jpg" width="50px"></div>
-      <div class="col-lg-3"><a href="#"><h4>Nguyen Van A</h4></a></div>
+      <div class="col-lg-3"><a href="#"><h4>Vo Son Tea</h4></a></div>
     </div>
   </div>
       <div id="menu">
@@ -60,9 +61,9 @@
           </ul>
           <div>
               <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
           </div>
       </div>
 

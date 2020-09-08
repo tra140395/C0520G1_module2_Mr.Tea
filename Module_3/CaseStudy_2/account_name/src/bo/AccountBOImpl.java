@@ -15,7 +15,7 @@ public class AccountBOImpl implements AccountBO {
 
     @Override
     public void saveCustomer(Customer customer) {
-        accountDAO.saveCustomer(customer);
+       accountDAO.saveCustomer(customer);
     }
 
     @Override
@@ -34,12 +34,12 @@ public class AccountBOImpl implements AccountBO {
     }
 
     @Override
-    public Customer findCustomerById(int id) {
+    public Customer findCustomerById(String id) {
         return accountDAO.findCustomerById(id);
     }
 
     @Override
-    public void deleteCustomer(int id) {
+    public void deleteCustomer(String id) {
         accountDAO.deleteCustomer(id);
     }
 
@@ -69,7 +69,10 @@ public class AccountBOImpl implements AccountBO {
     }
 
     @Override
-    public void deleteService(int id) {
+    public void deleteService(String id) {
         accountDAO.deleteService(id);
     }
+
+
+
 }

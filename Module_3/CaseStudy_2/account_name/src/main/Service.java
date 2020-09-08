@@ -1,7 +1,7 @@
 package main;
 
 public class Service {
-   private int service_id;
+   private String service_id;
    private String service_name;
    private int service_area;
    private double service_cost;
@@ -16,7 +16,7 @@ public class Service {
     public Service() {
     }
 
-    public Service(int service_id, String service_name, int service_area, double service_cost,
+    public Service(String service_id, String service_name, int service_area, double service_cost,
                    int service_max_people, int rent_type_id, int service_type_id, String standard_room,
                    String description_other_convenience, double pool_area, int number_of_floors) {
         this.service_id = service_id;
@@ -32,11 +32,11 @@ public class Service {
         this.number_of_floors = number_of_floors;
     }
 
-    public int getService_id() {
+    public String getService_id() {
         return service_id;
     }
 
-    public void setService_id(int service_id) {
+    public void setService_id(String service_id) {
         this.service_id = service_id;
     }
 

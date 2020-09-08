@@ -11,9 +11,8 @@
     <title>Search customer</title>
 </head>
 <body>
-<p>
-    <a href="/account">Back to User list</a>
-</p>
+<%@ include file="home.jsp"%>
+<p></p>
   <h2>Enter id of Customer you want to search</h2>
   <form action="/account" method="post">
       <input type="hidden" name="action" value="searchCustomer">

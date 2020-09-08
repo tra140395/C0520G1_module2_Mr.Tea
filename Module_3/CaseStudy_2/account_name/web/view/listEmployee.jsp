@@ -12,6 +12,8 @@
     <title>List of Employee</title>
 </head>
 <body>
+<%@ include file="home.jsp"%>
+<p></p>
 <h1 style="color: blueviolet">List of Employee</h1>
 
 <table border="1">

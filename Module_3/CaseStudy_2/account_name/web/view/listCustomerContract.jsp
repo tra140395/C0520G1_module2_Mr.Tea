@@ -12,16 +12,21 @@
     <title>List of Customer using Contract</title>
 </head>
 <body>
-  <h4><a href="/account">Back to Home</a></h4>
+<%@ include file="home.jsp"%>
+  <p></p>
   <h2 style="color: blue">Customer Using Contract</h2>
    <table border="1">
        <tr style="color: brown">
+           <td>Customer id</td>
            <td>Customer name</td>
+           <td>Service name</td>
            <td>Attach service name</td>
        </tr>
        <c:forEach var="temp" items="${customerContractList}">
            <tr>
+               <td>${temp.customer_id}</td>
                <td>${temp.customer_name}</td>
+               <td>${temp.service_name}</td>
                <td>${temp.attach_service_name}</td>
            </tr>
        </c:forEach>

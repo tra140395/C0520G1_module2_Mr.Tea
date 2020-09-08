@@ -49,7 +49,7 @@ create table customer_type (
 );  
 
 create table customer (
-  customer_id int primary key,
+  customer_id varchar(45) primary key,
   customer_type_id int not null,
   customer_name varchar(45),
   customer_birthday date not null,
@@ -86,7 +86,7 @@ create table rent_type (
 ); 
  
 create table service (
-  service_id int primary key,
+  service_id varchar(45) primary key,
   service_name varchar(45) not null,
   service_area int,
   service_cost double not null,
@@ -108,8 +108,8 @@ create table contract (
   contract_deposit double,
   contract_total_money double,
   employee_id int not null,
-  customer_id int not null,
-  service_id int not null,
+  customer_id varchar(45) not null,
+  service_id varchar(45) not null,
   foreign key(employee_id) references employee(employee_id),
   foreign key(customer_id) references customer(customer_id),
   foreign key(service_id) references service(service_id)
@@ -132,10 +132,4 @@ create table contract_detail (
   foreign key(attach_service_id) references attach_service(attach_service_id)
 );  
 
-select customer.customer_name, attach_service.attach_service_name
-  from customer
-  inner join contract on contract.customer_id = customer.customer_id
-  inner join contract_detail on contract_detail.contract_id = contract.contract_id
-  inner join attach_service on attach_service.attach_service_id = contract_detail.attach_service_id;
-  
   

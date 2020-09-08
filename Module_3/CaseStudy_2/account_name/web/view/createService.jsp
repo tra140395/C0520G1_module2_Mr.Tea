@@ -12,7 +12,8 @@
     <title>create service</title>
 </head>
 <body>
-<p><a href="/account">Back to Home</a></p>
+<%@ include file="home.jsp"%>
+<p></p>
 <p>
     <c:if test='${message != null}'>
         <span class="message">${message}</span>

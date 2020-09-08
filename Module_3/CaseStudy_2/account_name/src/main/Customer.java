@@ -1,7 +1,7 @@
 package main;
 
 public class Customer {
-    private int customer_id;
+    private String customer_id;
     private int customer_type_id;
     private String customer_name;
     private String customer_birthday;
@@ -14,7 +14,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customer_id, int customer_type_id, String customer_name, String customer_birthday,
+    public Customer(String customer_id, int customer_type_id, String customer_name, String customer_birthday,
                     int customer_gender, String customer_id_card, String customer_phone,
                     String customer_email, String customer_address) {
         this.customer_id = customer_id;
@@ -28,11 +28,11 @@ public class Customer {
         this.customer_address = customer_address;
     }
 
-    public int getCustomer_id() {
+    public String getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
+    public void setCustomer_id(String customer_id) {
         this.customer_id = customer_id;
     }
 

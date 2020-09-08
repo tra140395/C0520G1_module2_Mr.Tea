@@ -12,6 +12,8 @@
     <title>Service List</title>
 </head>
 <body>
+<%@ include file="home.jsp"%>
+<p></p>
 <h1 style="color: blueviolet">List of Service</h1>
 <table border="1">
     <tr style="color: brown">
