@@ -17,12 +17,12 @@
         <input type="number" name="param2" value="${param2}">
         <input type="number" value="${result}" readonly>
         <select name="calculation">
-            <option value="add">Add</option>
-            <option value="sub">Sub</option>
-            <option value="mul">Mul</option>
-            <option value="div">Div</option>
+            <option value="add" ${calculation=="add" ? "selected":""}>Add</option>
+            <option value="sub" ${calculation=="sub" ? "selected":""}>Sub</option>
+            <option value="mul" ${calculation=="mul" ? "selected":""}>Mul</option>
+            <option value="div" ${calculation=="div" ? "selected":""}>Div</option>
         </select>
         <input type="submit" value="calculate">
     </form>
 </body>
-</html>
+</html>  c

@@ -12,9 +12,10 @@
 </head>
 <body>
 <form action="/calculator" method="post">
-    <input type="number" name="usd">
+    <input type="number" name="usd" value="${usd}">
     <input type="number" name="tigia" value="20000" readonly>
-    <input type="submit" value="tinh">
+    <input type="number" name="vnd" value="${vnd}" readonly>
+    <input type="submit" value="tinh" >
 </form>
 </body>
 </html>
