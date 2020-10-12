@@ -1,4 +1,6 @@
 package vn.codegym.repository;
 
-public interface ImageRepository {
+import vn.codegym.model.Comment;
+
+public interface ImageRepository extends Repository<Comment> {
 }

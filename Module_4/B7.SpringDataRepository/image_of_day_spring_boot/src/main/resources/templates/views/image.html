@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/views/layout :: head">
+</head>
+<body>
+<img id="img-of-the-day" width="600px" height="400px">
+<div id="form">
+    <form action="/image/save" method="post" th:object="${comment}" novalidate="novalidate">
+        <br/>
+        <input type="number" min="1" max="5" th:field="*{score}">
+        <br/>
+        <label>Author:</label>
+        <input type="text" th:field="*{author}">
+        <br/>
+        <label>Feedback:</label>
+        <textarea type="text"  th:field="*{feedback}"></textarea>
+        <br/>
+        <input type="submit" value="comment">
+    </form>
+       <th:block th:each="row,rowStat : ${comments}">
+           <label th:text="${row.getScore()}"></label>
+           <label th:text="${row.getAuthor()}"></label>
+           <label th:text="${row.getFeedback()}"></label>
+           <label th:text="${row.getLike()}"></label>
+           <a th:href="@{/image/{id}/update(id=${row.id})}">Like</a>
+           <a th:href="@{/image/{id}/delete(id=${row.id})}">Delete</a>
+           <br/>
+           <hr/>
+       </th:block>
+
+    <div>
+        <a th:href="@{'/image'(page=${comments.number - 1})}" th:if="${comments.hasPrevious()}">Previous</a>
+        <span th:text="${comments.number + 1}"></span>/<span th:text="${comments.totalPages}"></span>
+        <a th:href="@{'/image'(page=${comments.number + 1})}" th:if="${comments.hasNext()}">Next</a>
+    </div>
+
+</div>
+
+<footer th:replace="/views/layout :: footer"></footer>
+<script>
+    let query = 'https://api.nasa.gov/planetary/apod?api_key=cdmv7QktZnHUk2YEeOiZ3wTtnFSAsGGnoKD0mP8x';
+    let request = new XMLHttpRequest();
+    request.open('GET', query);
+    request.onload = function() {
+        if (request.status === 200) {
+            let response = JSON.parse(request.responseText);
+            document.getElementById('img-of-the-day').setAttribute('src', response.url);
+        }
+    };
+    request.send();
+</script>
+
+</body>
+</html>
