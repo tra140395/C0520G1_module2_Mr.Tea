@@ -10,8 +10,7 @@
 <html>
 <head>
     <title>Home</title>
-    <c:set var="context" value="${pageContext.request.contextPath}" />
-    <link rel="stylesheet" type="text/css" href="${context}/view/nhung_vao_home.css">
+    <link rel="stylesheet" type="text/css" href="/view/nhung_vao_home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>

@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/views/home::header}">
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>edit</title>
 </head>
 <body>
-$END$
+<div th:replace="~{/views/home::navbar}"></div>
+     <form th:action="@{/customer/update}" method="post" th:object="${customer}">
+         <input type="hidden" th:field="*{customerId}">
+         <br/>
+         <label>Name:</label>
+         <input type="text" th:field="*{customerName}">
+         <br/>
+         <label>Birthday:</label>
+         <input type="date" th:field="*{customerBirthday}">
+         <br/>
+         <label>Gender:</label>
+         <select th:field="*{customerGender}">
+             <option th:value="0" th:text="Male"></option>
+             <option th:value="1" th:text="Female"></option>
+         </select>
+         <br/>
+         <label>Id Card:</label>
+         <input type="text" th:field="*{customerIdCard}">
+         <br/>
+         <label>Phone:</label>
+         <input type="text" th:field="*{customerPhone}">
+         <br/>
+         <label>Email:</label>
+         <input type="text" th:field="*{customerEmail}">
+         <br/>
+         <label>Address:</label>
+         <input type="text" th:field="*{customerAddress}">
+         <br/>
+         <label>Customer type:</label>
+         <select th:field="*{customerType}">
+             <option th:each="a:${customerTypeList}" th:value="${a.customerTypeId}"
+                     th:text="${a.customerTypeName}"></option>
+         </select>
+         <br/>
+         <input type="submit" value="Update">
+     </form>
 </body>
 </html>

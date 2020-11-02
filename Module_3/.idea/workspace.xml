@@ -2,12 +2,161 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c2e7921-8667-431e-8cf3-6358a11ab6f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/B8.Bootstrap/gallery_don_gian.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/B8.Bootstrap/landing_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/controller/FuramaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/CustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/Division.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/EducationDegree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/model/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/CustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/CustomerTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/DivisionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/EducationDegreeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/repository/PositionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/CustomerTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/DivisionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/EducationDegreeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/CustomerServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/CustomerTypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/DivisionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/EducationDegreeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/Impl/PositionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/java/com/codegym/casestudy/service/PositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/image1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/js/jquery-3.5.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/static/nhung_vao_home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/create_customer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/create_employee.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/edit_customer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/edit_employee.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/list_customer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/casestudy/src/main/resources/templates/views/list_employee.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/controller/CauHoiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/model/CauHoi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/model/LoaiCauHoi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/model/NguoiDung.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/repository/CauHoiRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/repository/LoaiCauHoiRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/repository/NguoiDungRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/CauHoiService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/Impl/CauHoiServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/Impl/LoaiCauHoiServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/Impl/NguoiDungServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/LoaiCauHoiService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/java/com/codegym/demo/service/NguoiDungService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/image1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/js/jquery-3.5.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/static/nhung_vao_home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/templates/views/create_cauHoi.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/demo_test/src/main/resources/templates/views/list_cauHoi.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/model/ProductType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/repository/ProductTypeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/service/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/service/ProductTypeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/service/SeviceImpl/ProductServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/java/com/codegym/test/service/SeviceImpl/ProductTypeServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/image1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/bootstrap.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/js/jquery-3.5.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/static/nhung_vao_home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/templates/views/create_product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/templates/views/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_4/test/src/main/resources/templates/views/list_product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Module_5/B1.Ux_Ui/ThucHanh/DoiMauNen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module_2/FuramaResort/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Module_2/FuramaResort/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/WEB-INF/classes/controller/ProductServlet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/product/view.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/artifacts/java_web_mvc_war_exploded/product/view.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/production/java-web-mvc/controller/ProductServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/B11.Mvc/ java-web-mvc/out/production/java-web-mvc/controller/ProductServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/B1.relational database/thuchanh/Student_05.sql" beforeDir="false" afterPath="$PROJECT_DIR$/B1.relational database/thuchanh/Student_05.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy_2/.idea/CaseStudy_2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy_2/.idea/CaseStudy_2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy_2/account_case_study_name/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy_2/account_case_study_name/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CaseStudy_2/account_case_study_name/web/view/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy_2/account_case_study_name/web/view/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tao_bang_case_study_jsp.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Tao_bang_case_study_jsp.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/bo/ProductBO.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/bo/ProductBO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/bo/ProductBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/bo/ProductBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/controller/ProductServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/controller/ProductServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/dao/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/dao/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/dao/ProductDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/dao/ProductDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/dao/ProductDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/dao/ProductDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/src/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/text/src/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/confirmDelete.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/confirmDelete.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/createForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/createForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/deleteForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/deleteForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/editForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/editForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/listProduct.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/listProduct.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text/web/view/searchForm.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/text/web/view/searchForm.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module_4/B15/blog_Security/src/main/resources/templates/views/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module_4/B15/blog_Security/src/main/resources/templates/views/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/5.2.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../Module_4/B5.ORM/DemoORM/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +185,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../C0420G1text/C0320G1-VoSonTra/module1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../selftest-bootstrap-c05" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="ServiceViewManager">
@@ -68,6 +217,7 @@
       <workItem from="1598404900307" duration="1588000" />
       <workItem from="1598798734959" duration="4200000" />
       <workItem from="1598837934647" duration="8888000" />
+      <workItem from="1603335990386" duration="3300000" />
     </task>
     <servers />
   </component>
@@ -75,14 +225,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="119" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603338743317">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="119" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1603338743317" />
     <state x="410" y="194" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598241110742">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="410" y="194" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.738@0.0.1366.738" timestamp="1598241110742" />
-    <state x="439" y="164" key="FileChooserDialogImpl" timestamp="1597921986831">
+    <state x="439" y="164" key="FileChooserDialogImpl" timestamp="1603339494529">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="439" y="164" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1597921986830" />
+    <state x="439" y="164" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1603339494529" />
     <state x="0" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1598802904469">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

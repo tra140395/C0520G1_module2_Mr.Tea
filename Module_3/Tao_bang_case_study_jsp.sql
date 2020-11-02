@@ -17,7 +17,6 @@ create table user (
   pass_word varchar(255)
 );
   
-drop table if exists user_role;  
 
 create table division (
   division_id int primary key,
@@ -37,16 +36,16 @@ create table employee (
   education_degree_id int not null,
   division_id int not null,
   user_name varchar(255),
-  foreign key(position_id) references position_employee(position_id),
-  foreign key(education_degree_id) references education_degree(education_degree_id),
-  foreign key(division_id) references division(division_id),
-  foreign key(user_name) references user(user_name) 
+  foreign key(position_id) references position_employee(position_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(education_degree_id) references education_degree(education_degree_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(division_id) references division(division_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(user_name) references user(user_name) ON DELETE CASCADE ON UPDATE CASCADE
 );  
 
 create table customer_type (
   customer_type_id int primary key,
   customer_type_name varchar(45)
-);  
+);   
 
 create table customer (
   customer_id varchar(45) primary key,
@@ -58,7 +57,7 @@ create table customer (
   customer_phone varchar(45),
   customer_email varchar(45),
   customer_address varchar(45),
-  foreign key(customer_type_id) references customer_type(customer_type_id)
+  foreign key(customer_type_id) references customer_type(customer_type_id) ON DELETE CASCADE ON UPDATE CASCADE
 );  
 
 create table role (
@@ -70,8 +69,8 @@ create table user_role (
   role_id int not null,
   user_name varchar(255) not null,
   constraint user_role_id primary key (role_id,user_name),
-  foreign key(role_id) references role(role_id),
-  foreign key(user_name) references user(user_name)
+  foreign key(role_id) references role(role_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(user_name) references user(user_name) ON DELETE CASCADE ON UPDATE CASCADE
 );  
 
 create table service_type (
@@ -97,8 +96,8 @@ create table service (
   description_other_convenience varchar(45),
   pool_area double,
   number_of_floors int,
-  foreign key(rent_type_id) references rent_type(rent_type_id),
-  foreign key(service_type_id) references service_type(service_type_id)
+  foreign key(rent_type_id) references rent_type(rent_type_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(service_type_id) references service_type(service_type_id) ON DELETE CASCADE ON UPDATE CASCADE
 );  
 
 create table contract (
@@ -110,9 +109,9 @@ create table contract (
   employee_id int not null,
   customer_id varchar(45) not null,
   service_id varchar(45) not null,
-  foreign key(employee_id) references employee(employee_id),
-  foreign key(customer_id) references customer(customer_id),
-  foreign key(service_id) references service(service_id)
+  foreign key(employee_id) references employee(employee_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(customer_id) references customer(customer_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(service_id) references service(service_id) ON DELETE CASCADE ON UPDATE CASCADE
 );  
   
 create table attach_service (
@@ -128,8 +127,8 @@ create table contract_detail (
   contract_id int not null,
   attach_service_id int not null,
   quantity int,
-  foreign key(contract_id) references contract(contract_id),
-  foreign key(attach_service_id) references attach_service(attach_service_id)
+  foreign key(contract_id) references contract(contract_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  foreign key(attach_service_id) references attach_service(attach_service_id) ON DELETE CASCADE ON UPDATE CASCADE
 );  
 
   

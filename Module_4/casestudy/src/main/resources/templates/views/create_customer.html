@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/views/home::header}">
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>create customer</title>
 </head>
 <body>
-$END$
+<div th:replace="~{/views/home::navbar}"></div>
+<form th:action="@{/customer/create}" method="post" th:object="${customer}">
+    <br/>
+    <div>
+        <label>Id:</label>
+        <input type="text" th:field="*{customerId}">
+        <p style="color: red" th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></p>
+    </div>
+    <div>
+        <label>Name:</label>
+        <input type="text" th:field="*{customerName}">
+        <p style="color: red" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></p>
+    </div>
+    <label>Birthday:</label>
+    <input type="date" th:field="*{customerBirthday}">
+    <br/>
+    <label>Gender:</label>
+    <select th:field="*{customerGender}">
+        <option th:value="0" th:text="Male"></option>
+        <option th:value="1" th:text="Female"></option>
+    </select>
+    <br/>
+    <div>
+    <label>Id Card:</label>
+    <input type="text" th:field="*{customerIdCard}">
+    <p style="color: red" th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></p>
+    </div>
+    <div>
+        <label>Phone:</label>
+        <input type="text" th:field="*{customerPhone}">
+        <p style="color: red" th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></p>
+    </div>
+    <div>
+    <label>Email:</label>
+    <input type="text" th:field="*{customerEmail}">
+    <p style="color: red" th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></p>
+    </div>
+    <label>Address:</label>
+    <input type="text" th:field="*{customerAddress}">
+    <br/>
+    <label>Customer type:</label>
+    <select th:field="*{customerType}">
+        <option th:each="a:${customerTypeList}" th:value="${a.customerTypeId}"
+                th:text="${a.customerTypeName}"></option>
+    </select>
+    <br/>
+    <input type="submit" value="Create">
+</form>
 </body>
 </html>

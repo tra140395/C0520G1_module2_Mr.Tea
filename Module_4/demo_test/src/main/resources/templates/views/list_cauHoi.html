@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>list</title>
 </head>
 <body>
-$END$
+<a th:href="@{/cauhoi/create}">Tao cau hoi</a>
+<div th:if="${ok}">
+    <h1 th:text="${ok}"></h1>
+</div>
+<div class="container-fluid">
+    <form th:action="@{/customer/delete}" method="post">
+        <table class="table" border="1">
+            <thead style="color: #005cbf">
+            <tr>
+                <th>ID Cau Hoi</th>
+                <th>Tieu De</th>
+                <th>Loai Cau Hoi</th>
+                <th>Ngay Dang</th>
+                <th>Nguoi Hoi</th>
+                <th>Nguoi Dap</th>
+                <th>Tinh Trang</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cauhoi:${cauHoiList}">
+                <td th:text="${cauhoi.idCauHoi}"></td>
+                <td th:text="${cauhoi.tieuDe}"></td>
+                <td th:text="${cauhoi.loaiCauHoi}"></td>
+                <td th:text="${cauhoi.ngayTaoCauHoi}"></td>
+                <td th:text="${cauhoi.nguoiTaoCauHoi}"></td>
+                <td th:text="${cauhoi.nguoiPhanHoi}"></td>
+                <td th:if="!${cauhoi.nguoiPhanHoi}" th:text="chophanhoi"></td>
+                <td th:if="${cauhoi.nguoiPhanHoi}" th:text="daphanhoi"></td>
+                <td><a th:href="@{/cauhoi/edit/{id}(id=${cauhoi.idCauHoi})}">update</a></td>
+                <td><a th:href="@{/cauhoi/delete/{id}(id=${cauhoi.idCauHoi})}">delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
 </body>
 </html>

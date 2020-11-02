@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<form th:action="@{/cauhoi/create}" method="post" th:object="${cauHoi}">
+    <br/>
+    <div>
+        <label>Tieu de</label>
+        <input type="text" th:field="*{tieuDe}">
+        <p style="color: red" th:if="${#fields.hasErrors('tieuDe')}" th:errors="*{tieuDe}"></p>
+    </div>
+    <div>
+        <label>Noi dung</label>
+        <input type="text" th:field="*{noiDung}">
+        <p style="color: red" th:if="${#fields.hasErrors('noiDung')}" th:errors="*{noiDung}"></p>
+    </div>
+    <div>
+        <label>Loai cau hoi:</label>
+        <select th:field="*{loaiCauHoi}">
+            <option th:each="a:${loaiCauHoi}" th:value="${a.tenLoaiCauHoi}"
+                    th:text="${a.tenLoaiCauHoi}"></option>
+        </select>
+    </div>
+    <div>
+    <label>Ngay dang:</label>
+    <input type="date" th:field="*{ngayTaoCauHoi}">
+        <p style="color: red" th:if="${#fields.hasErrors('ngayTaocauHoi')}" th:errors="*{ngayTaoCauHoi}"></p>
+    </div>
+    <div>
+    <label>Nguoi hoi:</label>
+    <select th:field="*{nguoiTaoCauHoi}">
+        <option th:each="a:${nguoiDung}" th:value="${a.idNguoiDung}"
+                th:text="${a.tenNguoiDung}"></option>
+    </select>
+    </div>
+    <br/>
+    <div>
+        <label>Nguoi dap:</label>
+        <select th:field="*{nguoiPhanHoi}">
+            <option th:each="a:${nguoiDung}" th:value="${a.tenNguoiDung}"
+                    th:text="${a.tenNguoiDung}"></option>
+        </select>
+    </div>
+    <div>
+        <label>Tinh trang</label>
+        <input type="hidden" th:field="*{status}" th:value="wait">
+        <p style="color: red" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
+    </div>
+    <input type="submit" value="Create">
+</form>
+
 </body>
 </html>
